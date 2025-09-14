@@ -4,7 +4,7 @@ export default function StudentInfo() {
   return (
     <main>
       <ul>
-        <li>Sue Steckle</li>
+        <li>Sue Steckle (00987166)</li>
         <li>
           <Link
             target="_blank"
