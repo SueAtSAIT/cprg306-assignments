@@ -9,6 +9,7 @@ export default function StudentInfo() {
         </li>
         <li>
           <Link
+            className="hover:font-semibold"
             target="_blank"
             href="https://github.com/SueAtSAIT/cprg306-assignments">
             My SueAtSAIT GitHub Repo for cprg306 Assignments

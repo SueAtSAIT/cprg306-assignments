@@ -3,8 +3,19 @@ import Link from "next/link";
 export default function Page() {
   return (
     <main>
-      <h1>CPRG 306: Web Development 2 - Assignments</h1>
-      <Link href="./week-2/">Week 2 Assignment</Link>
+      <h1 className="text-3xl mx-3 my-6">
+        CPRG 306: Web Development 2 - Assignments
+      </h1>
+      <Link
+        href="./week-2/"
+        className="bg-red-500 px-3 py-1 mx-3 text-white rounded-full">
+        Week 2 Assignment
+      </Link>
+      <Link
+        href="./week-3/"
+        className="bg-orange-500 px-3 py-1 text-white rounded-full">
+        Week 3 Assignment
+      </Link>
     </main>
   );
 }
