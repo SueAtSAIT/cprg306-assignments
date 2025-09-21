@@ -1,0 +1,17 @@
+//In page.js, create a functional component named Page that returns a main element
+// wrapped around an h1 "Shopping List" header and the ItemList component.
+// Use Tailwind classes for styling.
+
+import Item from "./item";
+import ItemList from "./item-list";
+
+export default function Page() {
+  return (
+    <main>
+      <header>
+        <h1>Shopping List</h1>
+      </header>
+      <Item {...ItemList.item}></Item>
+    </main>
+  );
+}
