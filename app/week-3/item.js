@@ -7,10 +7,10 @@ export default function Item({ name, quantity, category }) {
     <section>
       <div>
         {/* TODO: format this nicely once working */}
-        <ul className="bg-gray-100 rounded mx-4 my-4 px-3 py-3">
-          <li className="text-xl font-bold">{name}</li>
+        <ul className="bg-gray-100 rounded mx-4 my-4 px-3 py-3 shadow-lg">
+          <li className="text-xl font-bold capitalize ">{name}</li>
           <li>Quantity: {quantity}</li>
-          <li>Category: {category}</li>
+          <li className="capitalize ">Category: {category}</li>
         </ul>
       </div>
     </section>

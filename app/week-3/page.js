@@ -3,17 +3,16 @@
 // Use Tailwind classes for styling.
 
 import Link from "next/link";
-import Item from "./item";
+
 import ItemList from "./item-list";
-import GroceryList from "./shopping-list";
 
 export default function Page() {
   return (
     <>
-      <main>
-        <header>
-          <h1>Shopping List</h1>
-        </header>
+      <header>
+        <h1 className="text-3xl text-center font-semibold">Shopping List</h1>
+      </header>
+      <main className="mx-auto max-w-sm items-center">
         <ItemList />
       </main>
       <footer>
