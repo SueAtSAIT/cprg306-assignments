@@ -7,7 +7,7 @@ export default function Item(props) {
     <section>
       <div>
         {/* TODO: format this nicely once working */}
-        <ul>
+        <ul className="bg-gray-100 rounded mx-4 my-4 px-3 py-3">
           <li>Item Name: {props.name}</li>
           <li>Quantity: {props.quantity}</li>
           <li>Category: {props.category}</li>
