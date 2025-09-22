@@ -3,6 +3,8 @@
 // quantity, and category properties. Render these items using the Item component
 // you just created, passing item data as props.
 
+import Item from "./item";
+
 export default function ItemList() {
   const item1 = {
     name: "milk, 4 L 🥛",
@@ -75,4 +77,79 @@ export default function ItemList() {
     quantity: 4,
     category: "household",
   };
+
+  return (
+    <div>
+      <Item
+        name={item1.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+
+      <Item
+        name={item2.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+
+      <Item
+        name={item3.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+
+      <Item
+        name={item4.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+
+      <Item
+        name={item5.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+
+      <Item
+        name={item6.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+
+      <Item
+        name={item7.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+
+      <Item
+        name={item8.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+
+      <Item
+        name={item9.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+
+      <Item
+        name={item10.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+
+      <Item
+        name={item11.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+      <Item
+        name={item12.name}
+        quantity={item1.quantity}
+        category={item1.category}
+      />
+    </div>
+  );
 }
