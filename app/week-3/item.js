@@ -2,15 +2,15 @@
 // This component should accept name, quantity, and category as props
 // and display them in a list item element. Use Tailwind classes for styling.
 
-export default function Item({ name, quantity, category }) {
+export default function Item(props) {
   return (
     <section>
       <div>
         {/* TODO: format this nicely once working */}
         <ul>
-          <li>Item: {name}</li>
-          <li>Quantity: {quantity}</li>
-          <li>Category: {category}</li>
+          <li>Item Name: {props.name}</li>
+          <li>Quantity: {props.quantity}</li>
+          <li>Category: {props.category}</li>
         </ul>
       </div>
     </section>

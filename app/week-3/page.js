@@ -4,6 +4,7 @@
 
 import Item from "./item";
 import ItemList from "./item-list";
+import GroceryList from "./shopping-list";
 
 export default function Page() {
   return (
@@ -11,7 +12,7 @@ export default function Page() {
       <header>
         <h1>Shopping List</h1>
       </header>
-      <Item {...ItemList.item}></Item>
+      <Item {...ItemList.item1}></Item>
     </main>
   );
 }
