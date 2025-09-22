@@ -8,7 +8,7 @@ export default function Item({ name, quantity, category }) {
       <div>
         {/* TODO: format this nicely once working */}
         <ul className="bg-gray-100 rounded mx-4 my-4 px-3 py-3">
-          <li>{name}</li>
+          <li className="text-xl font-bold">{name}</li>
           <li>Quantity: {quantity}</li>
           <li>Category: {category}</li>
         </ul>

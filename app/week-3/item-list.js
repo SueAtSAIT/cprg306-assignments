@@ -86,70 +86,27 @@ export default function ItemList() {
         category={item1.category}
       />
 
-      <Item
-        name={item2.name}
-        quantity={item1.quantity}
-        category={item1.category}
-      />
+      <Item {...item2} />
 
-      <Item
-        name={item3.name}
-        quantity={item1.quantity}
-        category={item1.category}
-      />
+      <Item {...item3} />
 
-      <Item
-        name={item4.name}
-        quantity={item1.quantity}
-        category={item1.category}
-      />
+      <Item {...item4} />
 
-      <Item
-        name={item5.name}
-        quantity={item1.quantity}
-        category={item1.category}
-      />
+      <Item {...item5} />
 
-      <Item
-        name={item6.name}
-        quantity={item1.quantity}
-        category={item1.category}
-      />
+      <Item {...item6} />
 
-      <Item
-        name={item7.name}
-        quantity={item1.quantity}
-        category={item1.category}
-      />
+      <Item {...item7} />
 
-      <Item
-        name={item8.name}
-        quantity={item1.quantity}
-        category={item1.category}
-      />
+      <Item {...item8} />
 
-      <Item
-        name={item9.name}
-        quantity={item1.quantity}
-        category={item1.category}
-      />
+      <Item {...item9} />
 
-      <Item
-        name={item10.name}
-        quantity={item1.quantity}
-        category={item1.category}
-      />
+      <Item {...item10} />
 
-      <Item
-        name={item11.name}
-        quantity={item1.quantity}
-        category={item1.category}
-      />
-      <Item
-        name={item12.name}
-        quantity={item1.quantity}
-        category={item1.category}
-      />
+      <Item {...item11} />
+
+      <Item {...item12} />
     </div>
   );
 }
