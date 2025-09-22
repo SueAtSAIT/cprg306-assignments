@@ -10,12 +10,14 @@ export default function Page() {
   return (
     <>
       <header>
-        <h1 className="text-3xl text-center font-semibold">Shopping List</h1>
+        <h1 className="text-3xl text-center font-semibold my-3">
+          Shopping List
+        </h1>
       </header>
       <main className="mx-auto max-w-sm items-center">
         <ItemList />
       </main>
-      <footer>
+      <footer className="text-center my-10">
         <Link href="../.">Back to home page...</Link>
       </footer>
     </>
