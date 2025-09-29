@@ -6,6 +6,8 @@ import Link from "next/link";
 
 import ItemList from "./item-list";
 
+import FooterLink from "./footer";
+
 export default function Page() {
   return (
     <>
@@ -17,9 +19,7 @@ export default function Page() {
       <main className="mx-auto max-w-sm items-center">
         <ItemList />
       </main>
-      <footer className="text-center my-10">
-        <Link href="../.">Back to home page...</Link>
-      </footer>
+      <FooterLink />
     </>
   );
 }
