@@ -16,6 +16,11 @@ export default function Page() {
         className="bg-orange-500 px-3 py-1 text-white rounded-full">
         Week 3 Assignment
       </Link>
+      <Link
+        href="./week-4/"
+        className="bg-yellow-500 px-3 py-1 mx-3 text-white rounded-full">
+        Week 4 Assignment
+      </Link>
     </main>
   );
 }
