@@ -6,11 +6,19 @@ export default function NewItem() {
   const [quantity, setQuantity] = useState(1);
 
   const increment = () => {
-    setQuantity(quantity + 1);
+    if (quantity < 20) {
+      setQuantity(quantity + 1);
+    } else {
+      alert("You can't put more than 20 in your cart, GreedyGuts!");
+    }
   };
 
   const decrement = () => {
-    setQuantity(quantity - 1);
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    } else {
+      alert("Quantity can't be below 1 if you're adding an item.");
+    }
   };
 
   return (
