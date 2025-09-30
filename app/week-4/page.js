@@ -3,12 +3,13 @@ import FooterLink from "../week-3/footer";
 
 import NewItem from "./new-item";
 
+import Heading from "./heading";
+
 export default function Page() {
   return (
     <>
       <header>
-        <h1>Build Your List...</h1>
-        <p>Use this page to add items to your Shopping List.</p>
+        <Heading title="Build Your List..." />
       </header>
       <main>
         <NewItem />
