@@ -9,7 +9,10 @@ export default function Page() {
   return (
     <>
       <header>
-        <Heading title="Build Your List..." />
+        <Heading
+          title="Build Your List..."
+          pageinfo="Use this page to add items to your Shopping List."
+        />
       </header>
       <main>
         <NewItem />
