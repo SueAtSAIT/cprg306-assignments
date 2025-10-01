@@ -2,7 +2,6 @@
 
 // reference for changing to the disabled state:
 // https://stackoverflow.com/questions/44896924/how-to-disable-button-based-on-state
-// which makes the alert never show up so can remove the if/else structure in the functions
 
 import { useState } from "react";
 
@@ -38,7 +37,7 @@ export default function NewItem() {
         </button>
         <button
           onClick={increment}
-          disabled={quantity == 20 ? true : false}
+          // disabled={quantity == 20 ? true : false}
           className="basis-1/2 rounded-full m-4 p-4  bg-yellow-400 hover:bg-yellow-600 active:bg-yellow-900 hover:text-white disabled:bg-gray-100 disabled:text-white ">
           Add 1
         </button>
