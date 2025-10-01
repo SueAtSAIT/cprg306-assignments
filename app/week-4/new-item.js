@@ -26,16 +26,19 @@ export default function NewItem() {
   };
 
   return (
-    <div>
+    <div className="text-center">
       <p>Quantity: {quantity}</p>
-      <div className="flex flex-row gap-3">
+      <div className="flex flex-row gap-3 ">
         <button
           onClick={decrement}
           disabled={quantity == 1 ? true : false}
-          Classname="disabled:bg-gray-400">
+          className="basis-1/2 rounded-full m-4 p-4 border-2 bg-white hover:bg-gray-200 active:bg-gray-500 disabled:bg-gray-400 active:text-white">
           Remove 1
         </button>
-        <button onClick={increment} disabled={quantity == 20 ? true : false}>
+        <button
+          onClick={increment}
+          disabled={quantity == 20 ? true : false}
+          className="basis-1/2 rounded-full m-4 p-4  bg-yellow-400 hover:bg-yellow-600 active:bg-yellow-900 hover:text-white disabled:bg-gray-100 disabled:text-white ">
           Add 1
         </button>
       </div>
