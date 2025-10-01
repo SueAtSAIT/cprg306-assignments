@@ -8,17 +8,17 @@ export default function Page() {
       </h1>
       <Link
         href="./week-2/"
-        className="bg-red-500 px-3 py-1 mx-3 text-white rounded-full">
+        className="bg-red-500 px-3 py-1 mx-3 text-white rounded-full hover:bg-red-600">
         Week 2 Assignment
       </Link>
       <Link
         href="./week-3/"
-        className="bg-orange-500 px-3 py-1 text-white rounded-full">
+        className="bg-orange-500 px-3 py-1 text-white rounded-full hover:bg-orange-400">
         Week 3 Assignment
       </Link>
       <Link
         href="./week-4/"
-        className="bg-yellow-500 px-3 py-1 mx-3 text-white rounded-full">
+        className="bg-yellow-500 px-3 py-1 mx-3 text-white rounded-full hover:bg-yellow-300">
         Week 4 Assignment
       </Link>
     </main>

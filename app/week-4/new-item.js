@@ -31,6 +31,7 @@ export default function NewItem() {
         Quantity: <span className="text-3xl"> {quantity}</span>
       </p>
       <div className="flex flex-row gap-3 max-w-sm m-auto">
+        {/* TODO: figure out how to nest the disabled function in the parent function */}
         <button
           onClick={decrement}
           disabled={quantity == 1 ? true : false}
