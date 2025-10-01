@@ -27,12 +27,14 @@ export default function NewItem() {
 
   return (
     <div className="text-center">
-      <p>Quantity: {quantity}</p>
+      <p className="m-5 text-xl">
+        Quantity: <span className="text-3xl"> {quantity}</span>
+      </p>
       <div className="flex flex-row gap-3 max-w-sm m-auto">
         <button
           onClick={decrement}
           disabled={quantity == 1 ? true : false}
-          className="basis-1/2 rounded-full m-4 p-4 border-2 bg-white hover:bg-gray-200 active:bg-gray-500 disabled:bg-gray-400 active:text-white">
+          className="basis-1/2 rounded-full m-4 p-4 border-2 bg-white hover:bg-gray-200 active:bg-gray-500 disabled:bg-gray-100 disabled:text-white disabled:border-0 active:text-white">
           Remove 1
         </button>
         <button
@@ -42,7 +44,7 @@ export default function NewItem() {
           Add 1
         </button>
       </div>
-      <p>Quantity can be from 1 to a max of 20.</p>
+      <p className="italic">Quantity can be from 1 to a max of 20.</p>
     </div>
   );
 }
