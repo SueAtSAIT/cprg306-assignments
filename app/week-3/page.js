@@ -5,14 +5,13 @@
 import ItemList from "./item-list";
 
 import FooterLink from "./footer";
+import Heading from "../week-4/heading";
 
 export default function Page() {
   return (
     <>
       <header>
-        <h1 className="text-3xl text-center font-semibold my-3">
-          Shopping List
-        </h1>
+        <Heading title="Shopping List" />
       </header>
       <main className="mx-auto max-w-sm items-center">
         <ItemList />
