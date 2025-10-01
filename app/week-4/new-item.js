@@ -7,7 +7,9 @@
 import { useState } from "react";
 
 export default function NewItem() {
-  const [quantity, setQuantity] = useState(1);
+  const initialQuantity = 1;
+
+  const [quantity, setQuantity] = useState(initialQuantity);
 
   const increment = () => {
     if (quantity < 20) {
@@ -25,13 +27,17 @@ export default function NewItem() {
     }
   };
 
+  const reset = () => {
+    setQuantity(initialQuantity);
+  };
+
   return (
     <div className="text-center">
       <p className="m-5 text-xl">
         Quantity: <span className="text-3xl"> {quantity}</span>
       </p>
       <div className="flex flex-row gap-3 max-w-sm m-auto">
-        {/* TODO: figure out how to nest the disabled function in the parent function */}
+        {/* TODO: figure out how to nest the "disabled" function in the parent function */}
         <button
           onClick={decrement}
           disabled={quantity == 1 ? true : false}
@@ -46,6 +52,12 @@ export default function NewItem() {
         </button>
       </div>
       <p className="italic">Quantity can be from 1 to a max of 20.</p>
+      <button
+        onClick={reset}
+        disabled={quantity == 1 ? true : false}
+        className="basis-1/2 rounded-full m-4 p-4  bg-slate-500 hover:bg-slate-700 active:bg-slate-900 text-white disabled:bg-gray-100 disabled:text-white ">
+        Reset Quantity to 1
+      </button>
     </div>
   );
 }
