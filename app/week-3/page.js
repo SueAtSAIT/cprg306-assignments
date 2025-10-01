@@ -2,8 +2,6 @@
 // wrapped around an h1 "Shopping List" header and the ItemList component.
 // Use Tailwind classes for styling.
 
-import Link from "next/link";
-
 import ItemList from "./item-list";
 
 import FooterLink from "./footer";

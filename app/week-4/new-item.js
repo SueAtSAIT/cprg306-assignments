@@ -28,7 +28,7 @@ export default function NewItem() {
   return (
     <div className="text-center">
       <p>Quantity: {quantity}</p>
-      <div className="flex flex-row gap-3 ">
+      <div className="flex flex-row gap-3 max-w-sm m-auto">
         <button
           onClick={decrement}
           disabled={quantity == 1 ? true : false}
