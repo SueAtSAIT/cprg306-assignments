@@ -2,6 +2,7 @@
 
 // reference for changing to the disabled state:
 // https://stackoverflow.com/questions/44896924/how-to-disable-button-based-on-state
+// but it feels like a higher-order function could be used for this and reset (TODO)
 
 import { useState } from "react";
 
@@ -28,7 +29,7 @@ export default function NewItem() {
         Quantity: <span className="text-3xl"> {quantity}</span>
       </p>
       <div className="flex flex-row gap-3 max-w-sm m-auto">
-        {/* TODO: figure out how to nest the "disabled" function in the parent function */}
+        {/* TODO: figure out how to nest the "disabled" function in the called function */}
         <button
           onClick={decrement}
           disabled={quantity == 1 ? true : false}
@@ -37,7 +38,7 @@ export default function NewItem() {
         </button>
         <button
           onClick={increment}
-          // disabled={quantity == 20 ? true : false}
+          disabled={quantity == 20 ? true : false}
           className="basis-1/2 rounded-full m-4 p-4  bg-yellow-400 hover:bg-yellow-600 active:bg-yellow-900 hover:text-white disabled:bg-gray-100 disabled:text-white ">
           Add 1
         </button>
