@@ -23,7 +23,7 @@ export default function NewItem() {
   };
 
   return (
-    <div className="text-center">
+    <div className="text-center bg-gray-200 max-w-sm m-auto rounded-3xl">
       <p className="m-5 text-xl">
         Quantity: <span className="text-3xl"> {quantity}</span>
       </p>
