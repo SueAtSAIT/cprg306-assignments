@@ -3,7 +3,7 @@ import FooterLink from "../week-3/footer";
 
 import NewItem from "./new-item";
 
-import Heading from "./heading";
+import Heading from "../components/heading";
 
 export default function Page() {
   return (

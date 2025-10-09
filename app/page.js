@@ -8,7 +8,7 @@ export default function Page() {
       </h1>
       <Link
         href="./week-2/"
-        className="bg-red-500 px-3 py-1 mx-3 text-white rounded-full hover:bg-red-600">
+        className="bg-red-500 px-3 py-1 mx-3 text-white rounded-full hover:bg-red-300">
         Week 2 Assignment
       </Link>
       <Link
@@ -19,6 +19,11 @@ export default function Page() {
       <Link
         href="./week-4/"
         className="bg-yellow-500 px-3 py-1 mx-3 text-white rounded-full hover:bg-yellow-300">
+        Week 4 Assignment
+      </Link>
+      <Link
+        href="./week-5/"
+        className="bg-green-600 px-3 py-1  text-white rounded-full hover:bg-green-400">
         Week 4 Assignment
       </Link>
     </main>
