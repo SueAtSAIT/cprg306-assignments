@@ -24,7 +24,7 @@ export default function Page() {
       <Link
         href="./week-5/"
         className="bg-green-600 px-3 py-1  text-white rounded-full hover:bg-green-400">
-        Week 4 Assignment
+        Week 5 Assignment
       </Link>
     </main>
   );

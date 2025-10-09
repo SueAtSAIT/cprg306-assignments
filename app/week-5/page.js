@@ -1,5 +1,5 @@
 import Link from "next/link";
-import FooterLink from "../week-3/footer";
+import FooterLink from "../components/footer";
 
 import NewItem from "./new-item";
 
