@@ -1,4 +1,3 @@
-import Link from "next/link";
 import FooterLink from "../components/footer";
 
 import NewItem from "./new-item";
@@ -15,6 +14,8 @@ export default function Page() {
         />
       </header>
       <main>
+        {/* Render the Component 
+        Name Field, quantity, Category Field */}
         <NewItem />
       </main>
       <FooterLink />
