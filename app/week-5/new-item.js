@@ -60,12 +60,14 @@ export default function NewItem() {
         <div className="flex flex-row gap-3 m-auto">
           {/* TODO: figure out how to nest the "disabled" function in the called function */}
           <button
+            type="button"
             onClick={decrement}
             disabled={quantity == 1 ? true : false}
             className="basis-1/2 rounded-full m-4 p-4 border-2 bg-white hover:bg-gray-200 active:bg-gray-500 disabled:bg-gray-100 disabled:text-white disabled:border-0 active:text-white">
             Remove 1
           </button>
           <button
+            type="button"
             onClick={increment}
             disabled={quantity == 20 ? true : false}
             className="basis-1/2 rounded-full m-4 p-4  bg-yellow-400 hover:bg-yellow-600 active:bg-yellow-900 hover:text-white disabled:bg-gray-100 disabled:text-white ">
@@ -74,6 +76,7 @@ export default function NewItem() {
         </div>
         <p className="italic">Quantity can be from 1 to a max of 20.</p>
         <button
+          type="button"
           onClick={reset}
           disabled={quantity == 1 ? true : false}
           className="basis-1/2 rounded-full m-4 p-4  bg-slate-500 hover:bg-slate-700 active:bg-slate-900 text-white disabled:bg-gray-100 disabled:text-white ">
