@@ -24,18 +24,21 @@ export default function NewItem() {
     setName(event.target.value);
   };
   const [category, setCategory] = useState("produce");
+  // TODO:  Create a handleSubmit function. This function should:
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    const shoppingList = [];
-    console.log(shoppingList);
-    alert(`${name} with quantity ${quantity} (category: ${category}) added!`);
-    // TODO:  Create a handleSubmit function. This function should:
     // Prevent the form's default submission behavior.
+    event.preventDefault();
     // Create an item object with the current values of name, quantity, and category.
-    // Log the item object to the console.
+    const shoppingList = [];
+    // TODO push the item into the list
+
+    // Log the item object to the console. TODO - update this once object created
+    console.log(shoppingList);
     // Display an alert with the current state of name, quantity, and category.
-    // Reset the state variables to their initial values.
+    alert(`${name} with quantity ${quantity} (category: ${category}) added!`);
+
+    // TODO: Reset the state variables to their initial values.
   };
   // Render the form - Name Field, quantity, Category Field
   return (
@@ -76,6 +79,7 @@ export default function NewItem() {
           className="basis-1/2 rounded-full m-4 p-4  bg-slate-500 hover:bg-slate-700 active:bg-slate-900 text-white disabled:bg-gray-100 disabled:text-white ">
           Reset Quantity to 1
         </button>
+        {/* TODO: CATEGORY selector */}
         <h3>Placeholder for Category</h3>
         <button
           type="submit"
