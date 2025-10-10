@@ -13,7 +13,7 @@ export default function Page() {
           pageinfo="Use this page to add items to your Shopping List."
         />
       </header>
-      <main>
+      <main className="mt-5">
         {/* Render the Component 
         Name Field, quantity, Category Field */}
         <NewItem />

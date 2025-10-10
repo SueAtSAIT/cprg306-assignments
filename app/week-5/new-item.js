@@ -22,6 +22,7 @@ export default function NewItem() {
   const reset = () => {
     setQuantity(initialQuantity);
   };
+
   const [name, setName] = useState("");
   const [category, setCategory] = useState("produce");
 
@@ -36,7 +37,7 @@ export default function NewItem() {
   // Render the form - Name Field, quantity, Category Field
   return (
     <div className="text-center bg-gray-200 max-w-sm m-auto rounded-3xl">
-      <form>
+      <form onSubmit={handleSubmit}>
         <label for="name" className="m-5 text-xl">
           Item to add:
         </label>
@@ -73,6 +74,9 @@ export default function NewItem() {
           Reset Quantity to 1
         </button>
         <h3>Placeholder for Category</h3>
+        <button className="basis-1/2 rounded-full m-4 p-4  bg-green-300 hover:bg-green-400 active:bg-green-600 text-white disabled:bg-gray-100 disabled:text-white ">
+          Add this Item ✅
+        </button>
       </form>
     </div>
   );
