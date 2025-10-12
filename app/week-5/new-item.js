@@ -19,14 +19,17 @@ export default function NewItem() {
     setQuantity(initialQuantity);
   };
 
-  const [name, setName] = useState("");
+  const initialName = "";
+  const [name, setName] = useState(initialName);
   // Use the setName function in an onChange event handler
   // to update the state of name as the user types into the field.
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
 
-  const [category, setCategory] = useState("produce");
+  const initialCategory = "produce";
+
+  const [category, setCategory] = useState(initialCategory);
   // Use the setCategory function in an onChange event handler
   // to update the state of category as the user selects a different option.
   const handleCategoryChange = (event) => {
@@ -48,15 +51,15 @@ export default function NewItem() {
     // Display an alert with the current state of name, quantity, and category.
     alert(`${name} with quantity ${quantity} (category: ${category}) added!`);
 
-    // TODO: Reset the state variables to their initial values.
+    // Reset the state variables to their initial values.
     // reference: https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable
-    // name = useState("");
-    // quantity = useState(initialQuantity);
-    // category = useState("produce");
+    setName(initialName);
+    setQuantity(initialQuantity);
+    setCategory(initialCategory);
   };
   // Render the form - Name Field, quantity, Category Field
   return (
-    <div className="text-center bg-gray-200 max-w-sm m-auto rounded-3xl">
+    <div className="text-center bg-gray-200 max-w-md m-auto rounded-3xl">
       <form onSubmit={handleSubmit}>
         <label htmlFor="name" className="text-xl ">
           Item to add:
@@ -101,25 +104,25 @@ export default function NewItem() {
         <div>
           <label htmlFor="category" className="text-xl ">
             Category:
+            <select
+              id="category"
+              name="category"
+              value={category}
+              onChange={handleCategoryChange}
+              className="bg-white my-3 ml-2 py-3 px-1 text-xl ">
+              <option value="produce">Produce</option>
+              <option value="dairy">Dairy</option>
+              <option value="bakery">Bakery</option>
+              <option value="meat">Meat</option>
+              <option value="frozenFoods">Frozen Foods</option>
+              <option value="cannedGoods">Canned Goods</option>
+              <option value="dryGoods">Dry Goods</option>
+              <option value="beverages">Beverages</option>
+              <option value="snacks">Snacks</option>
+              <option value="household">Household</option>
+              <option value="other">Other</option>
+            </select>
           </label>
-          <select
-            id="category"
-            name="category"
-            value={category}
-            onChange={handleCategoryChange}
-            className="bg-white my-3 ml-2 py-3 px-1 text-xl outline">
-            <option value="produce">Produce</option>
-            <option value="dairy">Dairy</option>
-            <option value="bakery">Bakery</option>
-            <option value="meat">Meat</option>
-            <option value="frozenFoods">Frozen Foods</option>
-            <option value="cannedGoods">Canned Goods</option>
-            <option value="dryGoods">Dry Goods</option>
-            <option value="beverages">Beverages</option>
-            <option value="snacks">Snacks</option>
-            <option value="household">Household</option>
-            <option value="other">Other</option>
-          </select>
         </div>
         <button
           type="submit"
