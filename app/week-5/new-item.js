@@ -20,16 +20,19 @@ export default function NewItem() {
   };
 
   const [name, setName] = useState("");
-
-  const [category, setCategory] = useState("produce");
-
+  // Use the setName function in an onChange event handler
+  // to update the state of name as the user types into the field.
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
 
+  const [category, setCategory] = useState("produce");
+  // Use the setCategory function in an onChange event handler
+  // to update the state of category as the user selects a different option.
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
   };
+
   // TODO:  Create a handleSubmit function. This function should:
   const handleSubmit = (event) => {
     // Prevent the form's default submission behavior.
@@ -46,6 +49,10 @@ export default function NewItem() {
     alert(`${name} with quantity ${quantity} (category: ${category}) added!`);
 
     // TODO: Reset the state variables to their initial values.
+    // reference: https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable
+    // name = useState("");
+    // quantity = useState(initialQuantity);
+    // category = useState("produce");
   };
   // Render the form - Name Field, quantity, Category Field
   return (
@@ -53,16 +60,18 @@ export default function NewItem() {
       <form onSubmit={handleSubmit}>
         <label htmlFor="name" className="text-xl ">
           Item to add:
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            onChange={handleNameChange}
+            required
+            className="bg-white mt-3 ml-2 py-3 px-1 max-h-lh outline text-xl"
+          />
         </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          onChange={handleNameChange}
-          required
-          className="bg-white mt-3 ml-2 py-3 px-1 max-h-lh outline text-xl"
-        />
+        {/* The name label tag above is around the input element to focus if label clicked, per React doc:
+        https://react.dev/reference/react-dom/components/input#providing-a-label-for-an-input */}
         <p className="m-5 text-xl">Quantity: {quantity}</p>
         <div className="flex flex-row gap-3 m-auto">
           {/* TODO: figure out how to nest the "disabled" function in the called function */}
@@ -103,9 +112,9 @@ export default function NewItem() {
             <option value="dairy">Dairy</option>
             <option value="bakery">Bakery</option>
             <option value="meat">Meat</option>
-            <option value="frozen foods">Frozen Foods</option>
-            <option value="canned goods">Canned Goods</option>
-            <option value="dry goods">Dry Goods</option>
+            <option value="frozenFoods">Frozen Foods</option>
+            <option value="cannedGoods">Canned Goods</option>
+            <option value="dryGoods">Dry Goods</option>
             <option value="beverages">Beverages</option>
             <option value="snacks">Snacks</option>
             <option value="household">Household</option>
