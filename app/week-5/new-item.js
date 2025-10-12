@@ -7,6 +7,8 @@
 import { useState } from "react";
 
 export default function NewItem() {
+  // using a constant to define each initial value since I couldn't figure out how to set it and later reset it any other way
+
   const initialQuantity = 1;
   const [quantity, setQuantity] = useState(initialQuantity);
   const increment = () => {
@@ -28,7 +30,6 @@ export default function NewItem() {
   };
 
   const initialCategory = "produce";
-
   const [category, setCategory] = useState(initialCategory);
   // Use the setCategory function in an onChange event handler
   // to update the state of category as the user selects a different option.
@@ -47,12 +48,14 @@ export default function NewItem() {
     shoppingList.push(item);
 
     // Log the item object to the console.
-    console.log(item);
+    // using spread operator to log each item from the object individually
+    console.log(...item);
     // Display an alert with the current state of name, quantity, and category.
     alert(`${name} with quantity ${quantity} (category: ${category}) added!`);
 
     // Reset the state variables to their initial values.
     // reference: https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable
+    // and https://react.dev/reference/react/useState
     setName(initialName);
     setQuantity(initialQuantity);
     setCategory(initialCategory);
