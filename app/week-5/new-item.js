@@ -30,11 +30,13 @@ export default function NewItem() {
     // Prevent the form's default submission behavior.
     event.preventDefault();
     // Create an item object with the current values of name, quantity, and category.
+    const item = [{ name }, { quantity }, { category }];
     const shoppingList = [];
-    // TODO push the item into the list
+    // push the item into the list
+    shoppingList.push(item);
 
-    // Log the item object to the console. TODO - update this once object created
-    console.log(shoppingList);
+    // Log the item object to the console.
+    console.log(item);
     // Display an alert with the current state of name, quantity, and category.
     alert(`${name} with quantity ${quantity} (category: ${category}) added!`);
 
