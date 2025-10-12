@@ -20,12 +20,17 @@ export default function NewItem() {
   };
 
   const [name, setName] = useState("");
-  const handleChange = (event) => {
+
+  const [category, setCategory] = useState("produce");
+
+  const handleNameChange = (event) => {
     setName(event.target.value);
   };
-  const [category, setCategory] = useState("produce");
-  // TODO:  Create a handleSubmit function. This function should:
 
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+  };
+  // TODO:  Create a handleSubmit function. This function should:
   const handleSubmit = (event) => {
     // Prevent the form's default submission behavior.
     event.preventDefault();
@@ -54,7 +59,7 @@ export default function NewItem() {
           id="name"
           name="name"
           value={name}
-          onChange={handleChange}
+          onChange={handleNameChange}
           required
           className="bg-white mt-3 ml-2 py-3 px-1 max-h-lh outline text-xl"
         />
@@ -84,8 +89,29 @@ export default function NewItem() {
           className="basis-1/2 rounded-full m-4 p-4  bg-slate-500 hover:bg-slate-700 active:bg-slate-900 text-white disabled:bg-gray-100 disabled:text-white ">
           Reset Quantity to 1
         </button>
-        {/* TODO: CATEGORY selector */}
-        <h3>Placeholder for Category</h3>
+        <div>
+          <label htmlFor="category" className="text-xl ">
+            Category:
+          </label>
+          <select
+            id="category"
+            name="category"
+            value={category}
+            onChange={handleCategoryChange}
+            className="bg-white my-3 ml-2 py-3 px-1 text-xl outline">
+            <option value="produce">Produce</option>
+            <option value="dairy">Dairy</option>
+            <option value="bakery">Bakery</option>
+            <option value="meat">Meat</option>
+            <option value="frozen foods">Frozen Foods</option>
+            <option value="canned goods">Canned Goods</option>
+            <option value="dry goods">Dry Goods</option>
+            <option value="beverages">Beverages</option>
+            <option value="snacks">Snacks</option>
+            <option value="household">Household</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
         <button
           type="submit"
           className="basis-1/2 rounded-full m-4 p-4  bg-green-400 hover:bg-green-500 active:bg-green-600 text-white disabled:bg-gray-100 disabled:text-white ">
