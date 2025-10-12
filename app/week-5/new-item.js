@@ -62,7 +62,7 @@ export default function NewItem() {
   };
   // Render the form - Name Field, quantity, Category Field
   return (
-    <div className="text-center bg-gray-200 max-w-md m-auto rounded-3xl">
+    <div className="text-center bg-gray-200 max-w-md m-auto p-2 rounded-3xl">
       <form onSubmit={handleSubmit}>
         <label htmlFor="name" className="text-xl ">
           Item to add:

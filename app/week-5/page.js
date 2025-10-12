@@ -10,12 +10,10 @@ export default function Page() {
       <header>
         <Heading
           title="Build Your List..."
-          pageinfo="Use this page to add items to your Shopping List."
+          pageinfo="Use this form to add items to your Shopping List."
         />
       </header>
       <main className="mt-5">
-        {/* Render the Component 
-        Name Field, quantity, Category Field */}
         <NewItem />
       </main>
       <FooterLink />
