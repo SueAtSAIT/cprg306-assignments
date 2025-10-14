@@ -26,6 +26,11 @@ export default function Page() {
         className="bg-green-600 px-3 py-1  text-white rounded-full hover:bg-green-400">
         Week 5 Assignment
       </Link>
+      <Link
+        href="./week-6/"
+        className="bg-blue-600 px-3 py-1 mx-3 text-white rounded-full hover:bg-blue-400">
+        Week 6 Assignment
+      </Link>
     </main>
   );
 }
