@@ -24,11 +24,6 @@ export default function ItemList() {
   const sortByName = () => {
     setSortBy("name");
   };
-  //   Problems with Current Code:
-  // Wrong sort function: You're setting sortBy to a comparison function instead of a string
-  // Incorrect comparison: a.name - b.name won't work for strings
-  // Missing return statement: The component function ends abruptly
-  // Not using sorted list: You're mapping over items instead of sortedList
 
   const sortedList = [...items].sort((a, b) => {
     if (sortBy === "name") {
@@ -37,32 +32,32 @@ export default function ItemList() {
       return a.category.localeCompare(b.category);
     } else return 0;
   });
+
+  return (
+    // <div>
+    //   {/* sortedList.map((item, index) => ( //{" "}
+    //   <Item key={item.id || index} {...item} />}
+    //   <Item
+    //     key={item.id || index}
+    //     name={item.name}
+    //     quantity={item.quantity}
+    //     category={item.category}
+    //   />
+    //   ) } return ( // Added missing return statement */}
+    <div>
+      <h2>Sort by:</h2>
+      <button onClick={sortByName}>Name</button>
+      <button onClick={sortByCategory}>Category</button>
+
+      {sortedList.map((item, index) => (
+        <Item
+          key={item.id || index}
+          name={item.name}
+          quantity={item.quantity}
+          category={item.category}
+        />
+        // <Item key={item.id || index} {...item} />
+      ))}
+    </div>
+  );
 }
-
-return (
-  // <div>
-  //   {/* sortedList.map((item, index) => ( //{" "}
-  //   <Item key={item.id || index} {...item} />}
-  //   <Item
-  //     key={item.id || index}
-  //     name={item.name}
-  //     quantity={item.quantity}
-  //     category={item.category}
-  //   />
-  //   ) } return ( // Added missing return statement */}
-  <div>
-    <h2>Sort by:</h2>
-    <button onClick={sortByName}>Name</button>
-    <button onClick={sortByCategory}>Category</button>
-
-    {sortedList.map((item, index) => (
-      <Item
-        key={item.id || index}
-        name={item.name}
-        quantity={item.quantity}
-        category={item.category}
-      />
-      // <Item key={item.id || index} {...item} />
-    ))}
-  </div>
-);
