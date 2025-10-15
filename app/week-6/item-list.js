@@ -19,14 +19,14 @@ export default function ItemList() {
     <div>
       {
         items.map((item, index) => (
-          // <Item key={item.id || index} {...item[index]} />
+          <Item key={index} {...item} />
 
-          <Item
-            key={item.id || index}
-            name={item.name}
-            quantity={item.quantity}
-            category={item.category}
-          />
+          // <Item
+          //   key={item.id || index}
+          //   name={item.name}
+          //   quantity={item.quantity}
+          //   category={item.category}
+          // />
         ))
 
         /* <Item
