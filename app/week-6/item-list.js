@@ -15,28 +15,49 @@ import items from "./items.json";
 // Set the initial value of sortBy to "name", indicating that the list should initially be sorted by name.
 
 export default function ItemList() {
-  return (
-    <div>
-      {
-        items.map((item, index) => (
-          <Item key={index} {...item} />
+  const [sortBy, setSortBy] = useState("name");
 
-          // <Item
-          //   key={item.id || index}
-          //   name={item.name}
-          //   quantity={item.quantity}
-          //   category={item.category}
-          // />
-        ))
+  const sortByCategory = () => {
+    setSortBy("category");
+  };
 
-        /* <Item
+  // const sortByName = () => {
+  //   setSortBy("name");
+  // };
+  //   Problems with Current Code:
+  // Wrong sort function: You're setting sortBy to a comparison function instead of a string
+  // Incorrect comparison: a.name - b.name won't work for strings
+  // Missing return statement: The component function ends abruptly
+  // Not using sorted list: You're mapping over items instead of sortedList
+
+  //  const sortByName = () => {
+  //    setSortBy((a, b) => a.name - b.name);
+  //  };
+
+  // const sortedList = [...items].sort(sortBy);
+}
+
+return (
+  <div>
+    {
+      items.map((item, index) => (
+        <Item key={index} {...item} />
+
+        // <Item
+        //   key={item.id || index}
+        //   name={item.name}
+        //   quantity={item.quantity}
+        //   category={item.category}
+        // />
+      ))
+
+      /* <Item
         name={item1.name}
         quantity={item1.quantity}
         category={item1.category}
       />
 
       <Item {...item12} /> */
-      }
-    </div>
-  );
-}
+    }
+  </div>
+);
