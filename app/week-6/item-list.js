@@ -34,29 +34,32 @@ export default function ItemList() {
   });
 
   return (
-    // <div>
-    //   {/* sortedList.map((item, index) => ( //{" "}
-    //   <Item key={item.id || index} {...item} />}
-    //   <Item
-    //     key={item.id || index}
-    //     name={item.name}
-    //     quantity={item.quantity}
-    //     category={item.category}
-    //   />
-    //   ) } return ( // Added missing return statement */}
     <div>
-      <h2>Sort by:</h2>
-      <button onClick={sortByName}>Name</button>
-      <button onClick={sortByCategory}>Category</button>
+      <h2 className="text-xl text-center">Sort by:</h2>
+      <div className="flex ">
+        <div className="inline-flex justify-evenly">
+          {/* TODO: conditional rendering of button bg colour based on state ... HELP! */}
+          <button
+            onClick={sortByName}
+            className="bg-blue-500 m-6 p-3 rounded-2xl text-white hover:bg-blue-700 active:bg-blue-900">
+            Name
+          </button>
+          <button
+            onClick={sortByCategory}
+            className="bg-blue-500 m-6 p-3 rounded-2xl text-white hover:bg-blue-700 active:bg-blue-900">
+            Category
+          </button>
+        </div>
+      </div>
 
       {sortedList.map((item, index) => (
-        <Item
-          key={item.id || index}
-          name={item.name}
-          quantity={item.quantity}
-          category={item.category}
-        />
-        // <Item key={item.id || index} {...item} />
+        // <Item
+        //   key={item.id || index}
+        //   name={item.name}
+        //   quantity={item.quantity}
+        //   category={item.category}
+        // />
+        <Item key={item.id || index} {...item} />
       ))}
     </div>
   );
