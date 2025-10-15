@@ -6,31 +6,33 @@ export default function Page() {
       <h1 className="text-3xl mx-3 my-6">
         CPRG 306: Web Development 2 - Assignments
       </h1>
-      <Link
-        href="./week-2/"
-        className="bg-red-500 px-3 py-1 mx-3 text-white rounded-full hover:bg-red-300">
-        Week 2 Assignment
-      </Link>
-      <Link
-        href="./week-3/"
-        className="bg-orange-500 px-3 py-1 text-white rounded-full hover:bg-orange-400">
-        Week 3 Assignment
-      </Link>
-      <Link
-        href="./week-4/"
-        className="bg-yellow-500 px-3 py-1 mx-3 text-white rounded-full hover:bg-yellow-300">
-        Week 4 Assignment
-      </Link>
-      <Link
-        href="./week-5/"
-        className="bg-green-600 px-3 py-1  text-white rounded-full hover:bg-green-400">
-        Week 5 Assignment
-      </Link>
-      <Link
-        href="./week-6/"
-        className="bg-blue-600 px-3 py-1 mx-3 text-white rounded-full hover:bg-blue-400">
-        Week 6 Assignment
-      </Link>
+      <div className="block">
+        <Link
+          href="./week-2/"
+          className="bg-red-500 px-3 py-1 mx-3 text-white text-center rounded-full hover:bg-red-300 block md:inline-block my-3">
+          Week 2 Assignment
+        </Link>
+        <Link
+          href="./week-3/"
+          className="bg-orange-500 px-3 py-1 mx-3 text-white  text-center rounded-full hover:bg-orange-400 block md:inline-block my-3">
+          Week 3 Assignment
+        </Link>
+        <Link
+          href="./week-4/"
+          className="bg-yellow-500 px-3 py-1 mx-3 text-white  text-center rounded-full hover:bg-yellow-300 block md:inline-block my-3">
+          Week 4 Assignment
+        </Link>
+        <Link
+          href="./week-5/"
+          className="bg-green-600 px-3 py-1 mx-3 text-white  text-center rounded-full hover:bg-green-400 block md:inline-block my-3">
+          Week 5 Assignment
+        </Link>
+        <Link
+          href="./week-6/"
+          className="bg-blue-600 px-3 py-1 mx-3 text-white  text-center rounded-full hover:bg-blue-400 block md:inline-block my-3">
+          Week 6 Assignment
+        </Link>
+      </div>
     </main>
   );
 }
