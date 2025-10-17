@@ -17,12 +17,27 @@ import items from "./items.json";
 export default function ItemList() {
   const [sortBy, setSortBy] = useState("name");
 
+  const [isNameActive, setIsNameActive] = useState(true);
+  // const [isCatActive, setIsCatActive] = useState(false);
+
   const sortByCategory = () => {
+    // console.log(`Cat ${isCatActive}`);
+    console.log("Name ", isNameActive);
     setSortBy("category");
+    // setIsCatActive(true);
+    setIsNameActive(false);
+    // console.log(`Cat ${isCatActive}`);
+    console.log("Name ", isNameActive);
   };
 
   const sortByName = () => {
+    // console.log(`Cat ${isCatActive}`);
+    console.log("Name ", isNameActive);
     setSortBy("name");
+    setIsNameActive(true);
+    // setIsCatActive(false);
+    // console.log(`Cat ${isCatActive}`);
+    console.log("Name ", isNameActive);
   };
 
   const sortedList = [...items].sort((a, b) => {
@@ -33,6 +48,8 @@ export default function ItemList() {
     } else return 0;
   });
 
+  // TODO: create a stateful variable for the active button and use to update appearance
+
   return (
     <div>
       <h2 className="text-xl text-center">Sort by:</h2>
@@ -41,25 +58,44 @@ export default function ItemList() {
           {/* TODO: conditional rendering of button bg colour based on state ... HELP! */}
           <button
             onClick={sortByName}
-            className="bg-blue-500 m-6 p-3 rounded-2xl text-white hover:bg-blue-700 active:bg-blue-900">
+            // disabled={!isNameActive}
+            className={`${
+              isNameActive
+                ? "bg-blue-600 text-white"
+                : "bg-white border border-gray-600 text-gray-300"
+            }
+            " m-6 p-3 rounded-2xl  hover:bg-blue-700 hover:text-white active:bg-blue-900 `}>
             Name
           </button>
           <button
             onClick={sortByCategory}
-            className="bg-blue-500 m-6 p-3 rounded-2xl text-white hover:bg-blue-700 active:bg-blue-900">
+            // disabled={!isCatActive}
+            className={`${
+              isNameActive
+                ? "bg-white border border-gray-600 text-gray-300"
+                : "bg-blue-600 text-white"
+            } m-6 p-3 rounded-2xl  hover:bg-blue-700 active:bg-blue-900 `}>
             Category
           </button>
         </div>
       </div>
+      <h2>Tutorial Fodder:</h2>
 
-      {sortedList.map((item, index) => (
+      {sortedList.map((item) => {
+        return <li key={item.id}>{item.name}</li>;
+      })}
+
+      {sortedList.map((item) => (
         // <Item
-        //   key={item.id || index}
+        //   key={item.id}
         //   name={item.name}
         //   quantity={item.quantity}
         //   category={item.category}
         // />
-        <Item key={item.id || index} {...item} />
+        <Item key={item.id} {...item} />
+      ))}
+      {sortedList.map((item, index) => (
+        <Item key={index} {...item} />
       ))}
     </div>
   );
