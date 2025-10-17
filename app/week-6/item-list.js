@@ -4,9 +4,9 @@
 
 "use client";
 
-import Item from "./item";
-
 import { useState } from "react";
+
+import Item from "./item";
 
 import items from "./items.json";
 
@@ -15,31 +15,26 @@ import items from "./items.json";
 // Set the initial value of sortBy to "name", indicating that the list should initially be sorted by name.
 
 export default function ItemList() {
+  // set the sorting option
   const [sortBy, setSortBy] = useState("name");
 
+  // set the display state for the sorting buttons
   const [isNameActive, setIsNameActive] = useState(true);
-  // const [isCatActive, setIsCatActive] = useState(false);
 
+  // handle the Category button being clicked by setting the sortBy value to category
+  // and toggle the name button state to false to make the name button inactive and category button active:
   const sortByCategory = () => {
-    // console.log(`Cat ${isCatActive}`);
-    console.log("Name ", isNameActive);
     setSortBy("category");
-    // setIsCatActive(true);
     setIsNameActive(false);
-    // console.log(`Cat ${isCatActive}`);
-    console.log("Name ", isNameActive);
   };
-
+  // handle the Name button being clicked by setting the sortBy value to name
+  // and toggle the name button state to true to make the name button active and category button inactive:
   const sortByName = () => {
-    // console.log(`Cat ${isCatActive}`);
-    console.log("Name ", isNameActive);
     setSortBy("name");
     setIsNameActive(true);
-    // setIsCatActive(false);
-    // console.log(`Cat ${isCatActive}`);
-    console.log("Name ", isNameActive);
   };
 
+  // sort a copy of the list based on the active sortBy value, use this for the mapped display items in the element
   const sortedList = [...items].sort((a, b) => {
     if (sortBy === "name") {
       return a.name.localeCompare(b.name);
@@ -48,54 +43,34 @@ export default function ItemList() {
     } else return 0;
   });
 
-  // TODO: create a stateful variable for the active button and use to update appearance
-
   return (
     <div>
       <h2 className="text-xl text-center">Sort by:</h2>
       <div className="flex ">
         <div className="inline-flex justify-evenly">
-          {/* TODO: conditional rendering of button bg colour based on state ... HELP! */}
           <button
             onClick={sortByName}
-            // disabled={!isNameActive}
             className={`${
               isNameActive
                 ? "bg-blue-600 text-white"
                 : "bg-white border border-gray-600 text-gray-300"
             }
-            " m-6 p-3 rounded-2xl  hover:bg-blue-700 hover:text-white active:bg-blue-900 `}>
+            " m-6 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
             Name
           </button>
           <button
             onClick={sortByCategory}
-            // disabled={!isCatActive}
             className={`${
               isNameActive
                 ? "bg-white border border-gray-600 text-gray-300"
                 : "bg-blue-600 text-white"
-            } m-6 p-3 rounded-2xl  hover:bg-blue-700 active:bg-blue-900 `}>
+            } m-6 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
             Category
           </button>
         </div>
       </div>
-      <h2>Tutorial Fodder:</h2>
-
-      {sortedList.map((item) => {
-        return <li key={item.id}>{item.name}</li>;
-      })}
-
       {sortedList.map((item) => (
-        // <Item
-        //   key={item.id}
-        //   name={item.name}
-        //   quantity={item.quantity}
-        //   category={item.category}
-        // />
         <Item key={item.id} {...item} />
-      ))}
-      {sortedList.map((item, index) => (
-        <Item key={index} {...item} />
       ))}
     </div>
   );
