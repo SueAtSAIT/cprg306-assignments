@@ -46,29 +46,28 @@ export default function ItemList() {
   return (
     <div>
       <h2 className="text-xl text-center">Sort by:</h2>
-      <div className="flex ">
-        <div className="inline-flex justify-evenly">
-          <button
-            onClick={sortByName}
-            className={`${
-              isNameActive
-                ? "bg-blue-600 text-white"
-                : "bg-white border border-gray-600 text-gray-300"
-            }
+      <div className="flex justify-center">
+        <button
+          onClick={sortByName}
+          className={`${
+            isNameActive
+              ? "bg-blue-600 text-white"
+              : "bg-white border border-gray-600 text-gray-300"
+          }
             " m-6 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
-            Name
-          </button>
-          <button
-            onClick={sortByCategory}
-            className={`${
-              isNameActive
-                ? "bg-white border border-gray-600 text-gray-300"
-                : "bg-blue-600 text-white"
-            } m-6 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
-            Category
-          </button>
-        </div>
+          Name
+        </button>
+        <button
+          onClick={sortByCategory}
+          className={`${
+            isNameActive
+              ? "bg-white border border-gray-600 text-gray-300"
+              : "bg-blue-600 text-white"
+          } m-6 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
+          Category
+        </button>
       </div>
+
       {sortedList.map((item) => (
         <Item key={item.id} {...item} />
       ))}
