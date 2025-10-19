@@ -71,29 +71,29 @@ export default function ItemList() {
         <button
           onClick={sortByName}
           className={`${
-            isNameActive
+            isNameActive && !isGroupbyActive
               ? "bg-blue-600 text-white"
               : "bg-white border border-gray-600 text-gray-300"
           }
-            " m-6 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
+            " my-6 mx-2 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
           Name
         </button>
         <button
           onClick={sortByCategory}
           className={`${
-            isNameActive
+            isNameActive || isGroupbyActive
               ? "bg-white border border-gray-600 text-gray-300"
               : "bg-blue-600 text-white"
-          } m-6 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
+          } my-6 mx-2 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
           Category
         </button>
         <button
           onClick={groupByCategory}
           className={`${
-            isNameActive
-              ? "bg-white border border-gray-600 text-gray-300"
-              : "bg-blue-600 text-white"
-          } m-6 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
+            isGroupbyActive
+              ? "bg-blue-600 text-white"
+              : "bg-white border border-gray-600 text-gray-300"
+          } my-6 mx-2 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
           Group by Category
         </button>
       </div>
