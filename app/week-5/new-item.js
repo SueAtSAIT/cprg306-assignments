@@ -10,15 +10,30 @@ export default function NewItem() {
   // using a constant to define each initial value since I couldn't figure out how to set it and later reset it any other way
 
   const initialQuantity = 1;
+  const maxQuantity = 20;
   const [quantity, setQuantity] = useState(initialQuantity);
+  // Oct.19: add button control with useState - establish initial state:
+  const [isIncrementDisabled, setIsIncrementDisabled] = useState(false);
+  const [isDecrementDisabled, setIsDecrementDisabled] = useState(true);
+  const [isResetDisabled, setIsResetDisabled] = useState(true);
+
+  // Conditionally toggle the buttons when quantity changes
+  const updateButtonStates = (quantity) => {
+    setIsIncrementDisabled(quantity === maxQuantity);
+    setIsDecrementDisabled(quantity === initialQuantity);
+    setIsResetDisabled(quantity === initialQuantity);
+  };
   const increment = () => {
     setQuantity(quantity + 1);
+    updateButtonStates(quantity);
   };
   const decrement = () => {
     setQuantity(quantity - 1);
+    updateButtonStates(quantity);
   };
   const reset = () => {
     setQuantity(initialQuantity);
+    updateButtonStates(quantity);
   };
 
   const initialName = "";
@@ -84,14 +99,14 @@ export default function NewItem() {
           <button
             type="button"
             onClick={decrement}
-            disabled={quantity == 1 ? true : false}
+            disabled={isDecrementDisabled}
             className="basis-1/2 rounded-full m-4 p-4 border-2 bg-white hover:bg-gray-200 active:bg-gray-500 disabled:bg-gray-100 disabled:text-white disabled:border-0 active:text-white">
             Remove 1
           </button>
           <button
             type="button"
             onClick={increment}
-            disabled={quantity == 20 ? true : false}
+            disabled={isIncrementDisabled}
             className="basis-1/2 rounded-full m-4 p-4  bg-yellow-400 hover:bg-yellow-600 active:bg-yellow-900 hover:text-white disabled:bg-gray-100 disabled:text-white ">
             Add 1 more
           </button>
@@ -100,7 +115,7 @@ export default function NewItem() {
         <button
           type="button"
           onClick={reset}
-          disabled={quantity == 1 ? true : false}
+          disabled={isResetDisabled}
           className="basis-1/2 rounded-full m-4 p-4  bg-slate-500 hover:bg-slate-700 active:bg-slate-900 text-white disabled:bg-gray-100 disabled:text-white ">
           Reset Quantity to 1
         </button>
