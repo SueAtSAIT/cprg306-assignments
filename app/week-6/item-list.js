@@ -19,20 +19,27 @@ export default function ItemList() {
   // set the sorting option
   const [sortBy, setSortBy] = useState("name");
 
-  // set the display state for the sorting buttons
+  // set the initial display state for the sorting buttons
   const [isNameActive, setIsNameActive] = useState(true);
+  const [isGroupbyActive, setIsGroupbyActive] = useState(false);
 
   // handle the Category button being clicked by setting the sortBy value to category
   // and toggle the name button state to false to make the name button inactive and category button active:
   const sortByCategory = () => {
     setSortBy("category");
     setIsNameActive(false);
+    setIsGroupbyActive(false);
   };
   // handle the Name button being clicked by setting the sortBy value to name
   // and toggle the name button state to true to make the name button active and category button inactive:
   const sortByName = () => {
     setSortBy("name");
     setIsNameActive(true);
+    setIsGroupbyActive(false);
+  };
+
+  const groupByCategory = () => {
+    setIsGroupbyActive(true);
   };
 
   // sort a copy of the list based on the active sortBy value, use this for the mapped display items in the element
@@ -80,11 +87,21 @@ export default function ItemList() {
           } m-6 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
           Category
         </button>
+        <button
+          onClick={groupByCategory}
+          className={`${
+            isNameActive
+              ? "bg-white border border-gray-600 text-gray-300"
+              : "bg-blue-600 text-white"
+          } m-6 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
+          Group by Category
+        </button>
       </div>
-
-      {sortedList.map((item) => (
-        <Item key={item.id} {...item} />
-      ))}
+      <div className={`${isGroupbyActive ? "hidden" : ""}`}>
+        {sortedList.map((item) => (
+          <Item key={item.id} {...item} />
+        ))}
+      </div>
 
       <GroupedItem groupedList={groupedList} />
     </div>
