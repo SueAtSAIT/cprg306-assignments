@@ -24,16 +24,19 @@ export default function NewItem() {
     setIsResetDisabled(quantity === initialQuantity);
   };
   const increment = () => {
-    setQuantity(quantity + 1);
-    updateButtonStates(quantity);
+    let newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+    updateButtonStates(newQuantity);
   };
   const decrement = () => {
-    setQuantity(quantity - 1);
-    updateButtonStates(quantity);
+    let newQuantity = quantity - 1;
+    setQuantity(newQuantity);
+    updateButtonStates(newQuantity);
   };
   const reset = () => {
+    let newQuantity = initialQuantity;
     setQuantity(initialQuantity);
-    updateButtonStates(quantity);
+    updateButtonStates(newQuantity);
   };
 
   const initialName = "";
