@@ -9,6 +9,7 @@ import { useState } from "react";
 import Item from "./item";
 
 import items from "./items.json";
+import GroupedItem from "./groupeditem";
 
 // Use the useState hook to create a state variable sortBy and its setter function setSortBy.
 // This will be used to determine the sorting preference of the user.
@@ -43,6 +44,15 @@ export default function ItemList() {
     } else return 0;
   });
 
+  const groupedList = items.reduce((groupedItems, item) => {
+    const category = item.category;
+    if (groupedItems[category] == null) groupedItems[category] = [];
+    groupedItems[category].push(item);
+    return groupedItems;
+  }, {});
+  console.log(items);
+  console.log(groupedList);
+
   return (
     <div>
       <h2 className="text-xl text-center">Sort by:</h2>
@@ -71,6 +81,10 @@ export default function ItemList() {
       {sortedList.map((item) => (
         <Item key={item.id} {...item} />
       ))}
+
+      {/* {groupedList.map((group, index) => (
+        <GroupedItem key={index} {...group} />
+      ))} */}
     </div>
   );
 }
