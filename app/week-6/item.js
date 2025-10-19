@@ -5,7 +5,7 @@
 export default function Item({ name, quantity, category }) {
   return (
     <section>
-      <div>
+      <div className="dark:text-gray-600">
         <ul className="bg-gray-100 rounded mx-4 my-4 px-3 py-3 shadow-lg">
           <li className="text-xl font-bold capitalize ">{name}</li>
           <li>Quantity: {quantity}</li>
