@@ -102,8 +102,9 @@ export default function ItemList() {
           <Item key={item.id} {...item} />
         ))}
       </div>
-
-      <GroupedItem groupedList={groupedList} />
+      <div className={`${isGroupbyActive ? "" : "hidden"}`}>
+        <GroupedItem groupedList={groupedList} />
+      </div>
     </div>
   );
 }
