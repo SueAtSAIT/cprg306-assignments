@@ -73,7 +73,7 @@ export default function ItemList() {
           className={`${
             isNameActive && !isGroupbyActive
               ? "bg-blue-600 text-white"
-              : "bg-white border border-gray-600 text-gray-300"
+              : "bg-white border border-gray-600 text-gray-600"
           }
             " my-6 mx-2 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
           Name
@@ -82,7 +82,7 @@ export default function ItemList() {
           onClick={sortByCategory}
           className={`${
             isNameActive || isGroupbyActive
-              ? "bg-white border border-gray-600 text-gray-300"
+              ? "bg-white border border-gray-600 text-gray-600"
               : "bg-blue-600 text-white"
           } my-6 mx-2 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
           Category
@@ -92,7 +92,7 @@ export default function ItemList() {
           className={`${
             isGroupbyActive
               ? "bg-blue-600 text-white"
-              : "bg-white border border-gray-600 text-gray-300"
+              : "bg-white border border-gray-600 text-gray-600"
           } my-6 mx-2 p-3 rounded-2xl  hover:bg-blue-400 hover:text-white active:bg-blue-900 `}>
           Group by Category
         </button>
