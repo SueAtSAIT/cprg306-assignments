@@ -44,6 +44,10 @@ export default function ItemList() {
     } else return 0;
   });
 
+  // *Optional* group the list by category
+  // Figured this out watching the linked explainer video https://youtu.be/s1XVfm5mIuU?si=j53R6HmPa1jVxgpY
+  // Could not figure out how to unpack it again in a new element though - see comments in groupeditem.js
+
   const groupedList = items.reduce((groupedItems, item) => {
     const category = item.category;
     if (groupedItems[category] == null) groupedItems[category] = [];
@@ -82,9 +86,7 @@ export default function ItemList() {
         <Item key={item.id} {...item} />
       ))}
 
-      {/* {groupedList.map((group, index) => (
-        <GroupedItem key={index} {...group} />
-      ))} */}
+      <GroupedItem groupedList={groupedList} />
     </div>
   );
 }
