@@ -60,16 +60,24 @@ export default function NewItem() {
     // Prevent the form's default submission behavior.
     event.preventDefault();
     // Create an item object with the current values of name, quantity, and category.
-    const item = [{ name }, { quantity }, { category }];
+    let randomID = Math.random().toString(36).slice(2);
+    const item = [{ id: randomID }, { name }, { quantity }, { category }];
     const shoppingList = [];
     // push the item into the list
     shoppingList.push(item);
+
+    //RANDOM Number formula for item.id courtesy of StackOverflow
+    //https://stackoverflow.com/questions/10726909/random-alpha-numeric-string-in-javascript
+
+    // Math.random().toString(36).substr(2, 8);
+    // or Math.random().toString(36).slice(2)
+    // (see if either gives a decent ID value)
 
     // Log the item object to the console.
     // using spread operator to log each item from the object individually
     console.log(...item);
     // Display an alert with the current state of name, quantity, and category.
-    alert(`${name} with quantity ${quantity} (category: ${category}) added!`);
+    // alert(`${name} with quantity ${quantity} (category: ${category}) added!`);
 
     // Reset the state variables to their initial values.
     // reference: https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable
@@ -98,7 +106,6 @@ export default function NewItem() {
         https://react.dev/reference/react-dom/components/input#providing-a-label-for-an-input */}
         <p className="m-5 text-xl">Quantity: {quantity}</p>
         <div className="flex flex-row gap-3 m-auto">
-          {/* TODO: figure out how to nest the "disabled" function in the called function */}
           <button
             type="button"
             onClick={decrement}

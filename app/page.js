@@ -37,6 +37,11 @@ export default function Page() {
           className="bg-indigo-600 px-3 py-1 mx-3 text-white  text-center rounded-full hover:bg-indigo-400 block md:inline-block my-3">
           Week 7 Assignment
         </Link>
+        {/* <Link
+          href="./week-8/"
+          className="bg-violet-600 px-3 py-1 mx-3 text-white  text-center rounded-full hover:bg-violet-400 block md:inline-block my-3">
+          Week 8 Assignment
+        </Link> */}
       </div>
     </main>
   );

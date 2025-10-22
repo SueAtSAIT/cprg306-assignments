@@ -4,10 +4,13 @@
 
 import ItemList from "./item-list";
 import NewItem from "./new-item";
+import itemsData from "./items.json";
 import FooterLink from "../components/footer";
 import Heading from "../components/heading";
 
 export default function Page() {
+  // const [items, setSortBy] = useState("name");
+
   return (
     <>
       <header>
