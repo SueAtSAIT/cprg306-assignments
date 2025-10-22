@@ -3,7 +3,7 @@
 // Use Tailwind classes for styling.
 
 import ItemList from "./item-list";
-
+import NewItem from "./new-item";
 import FooterLink from "../components/footer";
 import Heading from "../components/heading";
 
@@ -14,6 +14,7 @@ export default function Page() {
         <Heading title="Shopping List" />
       </header>
       <main className="mx-auto max-w-sm items-center">
+        <NewItem />
         <ItemList />
       </main>
       <FooterLink />
