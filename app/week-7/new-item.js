@@ -6,7 +6,7 @@
 
 import { useState } from "react";
 
-export default function NewItem() {
+export default function NewItem({ onAddItem }) {
   // using a constant to define each initial value since I couldn't figure out how to set it and later reset it any other way
 
   const initialQuantity = 1;
@@ -60,22 +60,27 @@ export default function NewItem() {
     // Prevent the form's default submission behavior.
     event.preventDefault();
     // Create an item object with the current values of name, quantity, and category.
-    let randomID = Math.random().toString(36).slice(2);
-    const item = [{ id: randomID }, { name }, { quantity }, { category }];
-    const shoppingList = [];
-    // push the item into the list
-    shoppingList.push(item);
 
     //RANDOM Number formula for item.id courtesy of StackOverflow
     //https://stackoverflow.com/questions/10726909/random-alpha-numeric-string-in-javascript
-
     // Math.random().toString(36).substr(2, 8);
     // or Math.random().toString(36).slice(2)
     // (see if either gives a decent ID value)
+    let randomID = Math.random().toString(36).slice(2);
+    // const item = ({ id: randomID }, { name }, { quantity }, { category });
+    onAddItem({
+      id: randomID,
+      name: name,
+      quantity: quantity,
+      category: category,
+    });
+    // const shoppingList = [];
+    // // push the item into the list
+    // shoppingList.push(item);
 
     // Log the item object to the console.
     // using spread operator to log each item from the object individually
-    console.log(...item);
+    // console.log(...item);
     // Display an alert with the current state of name, quantity, and category.
     // alert(`${name} with quantity ${quantity} (category: ${category}) added!`);
 

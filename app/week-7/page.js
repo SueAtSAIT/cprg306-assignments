@@ -1,6 +1,9 @@
 //In page.js, create a functional component named Page that returns a main element
 // wrapped around an h1 "Shopping List" header and the ItemList component.
 // Use Tailwind classes for styling.
+"use client";
+
+import { useState } from "react";
 
 import ItemList from "./item-list";
 import NewItem from "./new-item";
@@ -9,7 +12,11 @@ import FooterLink from "../components/footer";
 import Heading from "../components/heading";
 
 export default function Page() {
-  // const [items, setSortBy] = useState("name");
+  const [items, setItems] = useState(itemsData);
+
+  const handleAddItem = (newItem) => {
+    setItems((previousItems) => [...previousItems, newItem]);
+  };
 
   return (
     <>
@@ -17,8 +24,8 @@ export default function Page() {
         <Heading title="Shopping List" />
       </header>
       <main className="mx-auto max-w-sm items-center">
-        <NewItem />
-        <ItemList />
+        <NewItem onAddItem={handleAddItem} />
+        <ItemList items={items} />
       </main>
       <FooterLink />
     </>
