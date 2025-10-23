@@ -1,18 +1,14 @@
 "use client";
 
-// reference for changing to the disabled state:
-// https://stackoverflow.com/questions/44896924/how-to-disable-button-based-on-state
-// but it feels like a higher-order function could be used for this and reset (TODO)
-
 import { useState } from "react";
 
 export default function NewItem({ onAddItem }) {
   // using a constant to define each initial value since I couldn't figure out how to set it and later reset it any other way
-
   const initialQuantity = 1;
   const maxQuantity = 20;
   const [quantity, setQuantity] = useState(initialQuantity);
-  // Oct.19: add button control with useState - establish initial state:
+
+  //  add button control with useState - establish initial state:
   const [isIncrementDisabled, setIsIncrementDisabled] = useState(false);
   const [isDecrementDisabled, setIsDecrementDisabled] = useState(true);
   const [isResetDisabled, setIsResetDisabled] = useState(true);
@@ -23,6 +19,7 @@ export default function NewItem({ onAddItem }) {
     setIsDecrementDisabled(quantity === initialQuantity);
     setIsResetDisabled(quantity === initialQuantity);
   };
+  // Update quantity according to the button being activated
   const increment = () => {
     let newQuantity = quantity + 1;
     setQuantity(newQuantity);
@@ -38,7 +35,7 @@ export default function NewItem({ onAddItem }) {
     setQuantity(initialQuantity);
     updateButtonStates(newQuantity);
   };
-
+  // handle all the input fields
   const initialName = "";
   const [name, setName] = useState(initialName);
   // Use the setName function in an onChange event handler
@@ -55,11 +52,10 @@ export default function NewItem({ onAddItem }) {
     setCategory(event.target.value);
   };
 
-  // TODO:  Create a handleSubmit function. This function should:
+  // Create a handleSubmit function. This function should:
   const handleSubmit = (event) => {
     // Prevent the form's default submission behavior.
     event.preventDefault();
-    // Create an item object with the current values of name, quantity, and category.
 
     //RANDOM Number formula for item.id courtesy of StackOverflow
     //https://stackoverflow.com/questions/10726909/random-alpha-numeric-string-in-javascript
@@ -67,31 +63,20 @@ export default function NewItem({ onAddItem }) {
     // or Math.random().toString(36).slice(2)
     // (see if either gives a decent ID value)
     let randomID = Math.random().toString(36).slice(2);
-    // const item = ({ id: randomID }, { name }, { quantity }, { category });
+    // Create an item object with the current values of name, quantity, and category plus the random ID:
     onAddItem({
       id: randomID,
       name: name,
       quantity: quantity,
       category: category,
     });
-    // const shoppingList = [];
-    // // push the item into the list
-    // shoppingList.push(item);
-
-    // Log the item object to the console.
-    // using spread operator to log each item from the object individually
-    // console.log(...item);
-    // Display an alert with the current state of name, quantity, and category.
-    // alert(`${name} with quantity ${quantity} (category: ${category}) added!`);
 
     // Reset the state variables to their initial values.
-    // reference: https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable
-    // and https://react.dev/reference/react/useState
     setName(initialName);
     setQuantity(initialQuantity);
     setCategory(initialCategory);
   };
-  // Render the form - Name Field, quantity, Category Field
+  // Render the form - Name Field, quantity, Category Field, Submit button
   return (
     <div className="text-center bg-gray-200 max-w-md m-auto p-2 rounded-3xl dark:text-gray-600">
       <form onSubmit={handleSubmit}>
@@ -107,8 +92,6 @@ export default function NewItem({ onAddItem }) {
             className="bg-white mt-3 ml-2 py-3 px-1 max-h-lh outline text-xl"
           />
         </label>
-        {/* The name label tag above is around the input element to focus if label clicked, per React doc:
-        https://react.dev/reference/react-dom/components/input#providing-a-label-for-an-input */}
         <p className="m-5 text-xl">Quantity: {quantity}</p>
         <div className="flex flex-row gap-3 m-auto">
           <button

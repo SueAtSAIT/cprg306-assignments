@@ -37,7 +37,7 @@ export default function ItemList({ items = [] }) {
     setIsNameActive(true);
     setIsGroupbyActive(false);
   };
-
+  // toggle the control to display the list grouped by category - hide the name/category cards when active & vice-versa
   const groupByCategory = () => {
     setIsGroupbyActive(true);
   };
@@ -52,7 +52,7 @@ export default function ItemList({ items = [] }) {
   });
 
   // *Optional* group the list by category
-  // Figured this out watching the linked explainer video https://youtu.be/s1XVfm5mIuU?si=j53R6HmPa1jVxgpY
+  // Figured reduce() out by watching the linked explainer video https://youtu.be/s1XVfm5mIuU?si=j53R6HmPa1jVxgpY
   // Could not figure out how to unpack it again in a new element though - see comments in groupeditem.js
 
   const groupedList = items.reduce((groupedItems, item) => {
