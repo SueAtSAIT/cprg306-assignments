@@ -59,6 +59,7 @@ export default function ItemList({ items = [] }) {
     const category = item.category;
     if (groupedItems[category] == null) groupedItems[category] = [];
     groupedItems[category].push(item);
+    groupedItems[category].sort((a, b) => a.name.localeCompare(b.name));
     return groupedItems;
   }, {});
 
