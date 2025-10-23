@@ -64,8 +64,8 @@ export default function ItemList({ items = [] }) {
   }, {});
 
   // Debugging: check the data format
-  console.log("Items:", items);
-  console.log("Grouped List:", groupedList);
+  console.log("1.Items:", items);
+  console.log("2.Grouped List:", groupedList);
 
   return (
     <div>
