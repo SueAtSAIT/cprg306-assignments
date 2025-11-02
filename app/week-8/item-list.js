@@ -1,0 +1,113 @@
+//Remove all item variables (const item1 etc.) from the ItemList component.
+
+// Import the useState hook from React, the Item component, and the items from the JSON file.
+
+"use client";
+
+import { useState } from "react";
+
+import Item from "./item";
+
+// import items from "./items.json";
+import GroupedItem from "./groupeditem";
+
+// Use the useState hook to create a state variable sortBy and its setter function setSortBy.
+// This will be used to determine the sorting preference of the user.
+// Set the initial value of sortBy to "name", indicating that the list should initially be sorted by name.
+
+export default function ItemList({ items = [] }) {
+  // set the sorting option
+  const [sortBy, setSortBy] = useState("name");
+
+  // set the initial display state for the sorting buttons
+  const [isNameActive, setIsNameActive] = useState(true);
+  const [isGroupbyActive, setIsGroupbyActive] = useState(false);
+
+  // handle the Category button being clicked by setting the sortBy value to category
+  // and toggle the name button state to false to make the name button inactive and category button active:
+  const sortByCategory = () => {
+    setSortBy("category");
+    setIsNameActive(false);
+    setIsGroupbyActive(false);
+  };
+  // handle the Name button being clicked by setting the sortBy value to name
+  // and toggle the name button state to true to make the name button active and category button inactive:
+  const sortByName = () => {
+    setSortBy("name");
+    setIsNameActive(true);
+    setIsGroupbyActive(false);
+  };
+  // toggle the control to display the list grouped by category - hide the name/category cards when active & vice-versa
+  const groupByCategory = () => {
+    setIsGroupbyActive(true);
+  };
+
+  // sort a copy of the list based on the active sortBy value, use this for the mapped display items in the element
+  const sortedList = [...items].sort((a, b) => {
+    if (sortBy === "name") {
+      return a.name.localeCompare(b.name);
+    } else if (sortBy === "category") {
+      return a.category.localeCompare(b.category);
+    } else return 0;
+  });
+
+  // *Optional* group the list by category
+  // Figured reduce() out by watching the linked explainer video https://youtu.be/s1XVfm5mIuU?si=j53R6HmPa1jVxgpY
+  // Could not figure out how to unpack it again in a new element though - see comments in groupeditem.js
+
+  const groupedList = items.reduce((groupedItems, item) => {
+    const category = item.category;
+    if (groupedItems[category] == null) groupedItems[category] = [];
+    groupedItems[category].push(item);
+    groupedItems[category].sort((a, b) => a.name.localeCompare(b.name));
+    return groupedItems;
+  }, {});
+
+  // Debugging: check the data format
+  console.log("1.Items:", items);
+  console.log("2.Grouped List:", groupedList);
+
+  return (
+    <div>
+      <h2 className="text-xl text-center">Sort by:</h2>
+      <div className="flex justify-center">
+        <button
+          onClick={sortByName}
+          className={`${
+            isNameActive && !isGroupbyActive
+              ? "bg-indigo-600 text-white"
+              : "bg-white border border-gray-600 text-gray-600"
+          }
+            " my-6 mx-2 p-3 rounded-2xl  hover:bg-indigo-400 hover:text-white active:bg-indigo-900 `}>
+          Name
+        </button>
+        <button
+          onClick={sortByCategory}
+          className={`${
+            isNameActive || isGroupbyActive
+              ? "bg-white border border-gray-600 text-gray-600"
+              : "bg-indigo-600 text-white"
+          } my-6 mx-2 p-3 rounded-2xl  hover:bg-indigo-400 hover:text-white active:bg-indigo-900 `}>
+          Category
+        </button>
+        <button
+          onClick={groupByCategory}
+          className={`${
+            isGroupbyActive
+              ? "bg-indigo-600 text-white"
+              : "bg-white border border-gray-600 text-gray-600"
+          } my-6 mx-2 p-3 rounded-2xl  hover:bg-indigo-400 hover:text-white active:bg-indigo-900 `}>
+          Group by Category
+        </button>
+      </div>
+      <div className={`${isGroupbyActive ? "hidden" : ""}`}>
+        {sortedList.map((item) => (
+          <Item key={item.id} {...item} />
+        ))}
+      </div>
+      <div className={`${isGroupbyActive ? "" : "hidden"}`}>
+        <GroupedItem groupedList={groupedList} />
+      </div>
+    </div>
+  );
+}
