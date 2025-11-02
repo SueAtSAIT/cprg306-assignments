@@ -142,7 +142,7 @@ export default function NewItem({ onAddItem }) {
         </div>
         <button
           type="submit"
-          className="basis-1/2 rounded-full m-4 p-4  bg-indigo-400 hover:bg-indigo-500 active:bg-indigo-600 text-white disabled:bg-gray-100 disabled:text-white ">
+          className="basis-1/2 rounded-full m-4 p-4  bg-violet-400 hover:bg-violet-500 active:bg-violet-600 text-white disabled:bg-gray-100 disabled:text-white ">
           Add this Item ✅
         </button>
       </form>

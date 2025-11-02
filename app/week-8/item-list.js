@@ -75,10 +75,10 @@ export default function ItemList({ items = [] }) {
           onClick={sortByName}
           className={`${
             isNameActive && !isGroupbyActive
-              ? "bg-indigo-600 text-white"
+              ? "bg-violet-600 text-white"
               : "bg-white border border-gray-600 text-gray-600"
           }
-            " my-6 mx-2 p-3 rounded-2xl  hover:bg-indigo-400 hover:text-white active:bg-indigo-900 `}>
+            " my-6 mx-2 p-3 rounded-2xl  hover:bg-violet-400 hover:text-white active:bg-violet-900 `}>
           Name
         </button>
         <button
@@ -86,17 +86,17 @@ export default function ItemList({ items = [] }) {
           className={`${
             isNameActive || isGroupbyActive
               ? "bg-white border border-gray-600 text-gray-600"
-              : "bg-indigo-600 text-white"
-          } my-6 mx-2 p-3 rounded-2xl  hover:bg-indigo-400 hover:text-white active:bg-indigo-900 `}>
+              : "bg-violet-600 text-white"
+          } my-6 mx-2 p-3 rounded-2xl  hover:bg-violet-400 hover:text-white active:bg-violet-900 `}>
           Category
         </button>
         <button
           onClick={groupByCategory}
           className={`${
             isGroupbyActive
-              ? "bg-indigo-600 text-white"
+              ? "bg-violet-600 text-white"
               : "bg-white border border-gray-600 text-gray-600"
-          } my-6 mx-2 p-3 rounded-2xl  hover:bg-indigo-400 hover:text-white active:bg-indigo-900 `}>
+          } my-6 mx-2 p-3 rounded-2xl  hover:bg-violet-400 hover:text-white active:bg-violet-900 `}>
           Group by Category
         </button>
       </div>
