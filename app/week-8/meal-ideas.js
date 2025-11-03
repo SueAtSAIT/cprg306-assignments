@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 
 export default function GetMealIdeas({ ingredient }) {
   const [meals, setMeals] = useState([]);
-  const [error, setError] = useState(null);
+
   console.log(`Passed ingredient is ${ingredient}`);
   useEffect(() => {
     fetchMealIdeas(ingredient);
@@ -25,13 +25,11 @@ export default function GetMealIdeas({ ingredient }) {
 
       if (data) {
         setMeals(data.meals);
-        setError(null);
       } else {
         setMeals([]);
       }
-    } catch (error) {
-      console.log(error.message);
-      setError(error.message);
+    } catch (e) {
+      console.log(e.message);
       setMeals([]);
     }
   };

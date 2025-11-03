@@ -1,5 +1,3 @@
-//Remove all item variables (const item1 etc.) from the ItemList component.
-
 // Import the useState hook from React, the Item component, and the items from the JSON file.
 
 "use client";
@@ -7,15 +5,13 @@
 import { useState } from "react";
 
 import Item from "./item";
-
-// import items from "./items.json";
 import GroupedItem from "./groupeditem";
 
 // Use the useState hook to create a state variable sortBy and its setter function setSortBy.
 // This will be used to determine the sorting preference of the user.
 // Set the initial value of sortBy to "name", indicating that the list should initially be sorted by name.
 
-export default function ItemList({ items = [] }) {
+export default function ItemList({ items = [], onItemSelect }) {
   // set the sorting option
   const [sortBy, setSortBy] = useState("name");
 
@@ -99,9 +95,11 @@ export default function ItemList({ items = [] }) {
           Group by Category
         </button>
       </div>
-      <div className={`${isGroupbyActive ? "hidden" : ""}`}>
+      <div
+        onClick={onItemSelect}
+        className={`${isGroupbyActive ? "hidden" : ""}`}>
         {sortedList.map((item) => (
-          <Item key={item.id} {...item} />
+          <Item key={item.id} {...item} onSelect={onItemSelect} />
         ))}
       </div>
       <div className={`${isGroupbyActive ? "" : "hidden"}`}>
