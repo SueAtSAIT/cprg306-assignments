@@ -7,7 +7,11 @@
 export default function Item({ name, quantity, category, onSelect }) {
   return (
     <section>
-      <div onClick={() => onSelect?.(name)}>
+      <div
+        onClick={() => {
+          console.log("Item clicked, sending name:", name); // debug
+          onSelect?.(name);
+        }}>
         <ul className="bg-gray-100 rounded mx-4 my-4 px-3 py-3 shadow-lg dark:text-gray-300 dark:bg-gray-700">
           <li className="text-xl font-bold capitalize ">{name}</li>
           <li>Quantity: {quantity}</li>

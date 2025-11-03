@@ -3,7 +3,7 @@
 // Use Tailwind classes for styling.
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ItemList from "./item-list";
 import NewItem from "./new-item";
@@ -19,9 +19,7 @@ export default function Page() {
     setItems((previousItems) => [...previousItems, newItem]);
   };
 
-  const [selectedItemName, setSelectedItemName] = useState();
-
-  let ingredient;
+  const [selectedItemName, setSelectedItemName] = useState("");
 
   const handleItemSelect = (name) => {
     // clean up the name of the ingredient to be passed to the API call
@@ -34,20 +32,27 @@ export default function Page() {
       )
       .trim();
     // trim and trim again since I can't figure out why Dish Soap has a trailing underscore after processing
-    if (ingName.search(/,/) > 0) {
-      let commaPosition = ingName.search(/,/);
-      console.log(commaPosition);
-      let trimmedIng = ingName.trim();
-      ingredient = trimmedIng.slice(0, commaPosition).replace(/ /g, "_");
-    } else {
-      let trimmedIng = ingName.trim();
-      ingredient = trimmedIng.replace(/ /g, "_");
-    }
+    const ingredient = ingName.includes(",")
+      ? ingName.slice(0, ingName.indexOf(",")).trim().replace(/ /g, "_")
+      : ingName.trim().replace(/ /g, "_");
 
-    console.log(ingredient);
+    // if (ingName.search(/,/) > 0) {
+    //   let commaPosition = ingName.search(/,/);
+    //   console.log(commaPosition);
+    //   let trimmedIng = ingName.trim();
+    //   ingredient = trimmedIng.slice(0, commaPosition).replace(/ /g, "_");
+    // } else {
+    //   let trimmedIng = ingName.trim();
+    //   ingredient = trimmedIng.replace(/ /g, "_");
+    // }
+
+    console.log(`ingredient: ${ingredient}`);
     setSelectedItemName(ingredient);
-    console.log(selectedItemName);
   };
+
+  useEffect(() => {
+    console.log("selectedItemName changed:", selectedItemName);
+  }, [selectedItemName]);
 
   return (
     <>
@@ -57,7 +62,7 @@ export default function Page() {
       <main className="mx-auto max-w-sm items-center">
         <NewItem onAddItem={handleAddItem} />
         <ItemList items={items} onItemSelect={handleItemSelect} />
-        <GetMealIdeas ingredient={selectedItemName} />
+        {/* <GetMealIdeas ingredient={selectedItemName} /> */}
       </main>
       <FooterLink />
     </>
