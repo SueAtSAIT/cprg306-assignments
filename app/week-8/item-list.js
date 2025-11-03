@@ -53,7 +53,6 @@ export default function ItemList({ items = [] }) {
 
   // *Optional* group the list by category
   // Figured reduce() out by watching the linked explainer video https://youtu.be/s1XVfm5mIuU?si=j53R6HmPa1jVxgpY
-  // Could not figure out how to unpack it again in a new element though - see comments in groupeditem.js
 
   const groupedList = items.reduce((groupedItems, item) => {
     const category = item.category;
