@@ -56,7 +56,7 @@ export default function Page() {
       </header>
       <main className="mx-auto max-w-sm items-center">
         <NewItem onAddItem={handleAddItem} />
-        <ItemList items={items} onItemSelect={handleItemSelect(name)} />
+        <ItemList items={items} onItemSelect={handleItemSelect} />
         <GetMealIdeas ingredient={selectedItemName} />
       </main>
       <FooterLink />
