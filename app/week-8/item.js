@@ -2,9 +2,13 @@
 // This component should accept name, quantity, and category as props
 // and display them in a list item element. Use Tailwind classes for styling.
 
-export default function Item({ name, quantity, category }) {
+import GetMealIdeas from "./meal-ideas";
+
+export default function Item({ name, quantity, category, onSelect }) {
+  let ingredient;
+
   function handleCardClick() {
-    let ingredient = "";
+    // clean up the name of the ingredient to be passed to the API call
     let ingName = name
       .replace(
         /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
@@ -12,7 +16,6 @@ export default function Item({ name, quantity, category }) {
       )
       .trim();
     if (ingName.search(/,/) > 0) {
-      console.log("found a comma to be removed");
       let commaPosition = ingName.search(/,/);
       console.log(commaPosition);
       let trimmedIng = ingName.trim();
@@ -32,6 +35,7 @@ export default function Item({ name, quantity, category }) {
           <li className="text-xl font-bold capitalize ">{name}</li>
           <li>Quantity: {quantity}</li>
           <li className="capitalize ">Category: {category}</li>
+          <GetMealIdeas ingredient={ingredient} />;
         </ul>
       </div>
     </section>
