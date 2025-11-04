@@ -47,8 +47,19 @@ export default function GetMealIdeas({ ingredient }) {
 
         {(meals || []).map((meal) => (
           <div key={meal.idMeal}>
-            <ul>
-              <li key={meal.idMeal}>{meal.strMeal}</li>
+            <ul className="mt-4 space-y-3">
+              <li
+                key={meal.idMeal}
+                className="flex box-border h-14 w-75 items-center gap-3">
+                <img
+                  src={meal.strMealThumb}
+                  alt={meal.strMeal}
+                  className="w-12 h-12 object-cover rounded"
+                />
+                <span className="text-base font-medium capitalize">
+                  {meal.strMeal}
+                </span>
+              </li>
             </ul>
           </div>
         ))}

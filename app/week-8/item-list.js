@@ -85,6 +85,9 @@ export default function ItemList({ items = [], onItemSelect }) {
           } my-6 mx-2 p-3 rounded-2xl  hover:bg-violet-400 hover:text-white active:bg-violet-900 `}>
           Category
         </button>
+        {/* Leaving "Group by Category" active without any meal searching 
+        or reseting of previously searched meals if this is clicked
+        (it should update ingredient to null but I don't want to mess with it any further!) */}
         <button
           onClick={groupByCategory}
           className={`${
@@ -95,9 +98,11 @@ export default function ItemList({ items = [], onItemSelect }) {
           Group by Category
         </button>
       </div>
-      <div
-        // onClick={onItemSelect}
-        className={`${isGroupbyActive ? "hidden" : ""}`}>
+      <div className={`${isGroupbyActive ? "hidden" : ""}`}>
+        <p className="ml-4">
+          Click any <span className="italic">edible</span> item to search meal
+          ideas...
+        </p>
         {sortedList.map((item) => (
           <Item key={item.id} {...item} onSelect={onItemSelect} />
         ))}
