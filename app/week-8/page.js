@@ -31,6 +31,12 @@ export default function Page() {
         ""
       )
       .trim();
+    console.log(
+      "Type of ingName:",
+      typeof ingName,
+      "Value of ingName:",
+      ingName
+    );
     // trim and trim again since I can't figure out why Dish Soap has a trailing underscore after processing
     const ingredient = ingName.includes(",")
       ? ingName.slice(0, ingName.indexOf(",")).trim().replace(/ /g, "_")
