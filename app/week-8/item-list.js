@@ -58,10 +58,6 @@ export default function ItemList({ items = [], onItemSelect }) {
     return groupedItems;
   }, {});
 
-  // Debugging: check the data format
-  console.log("1.Items:", items);
-  console.log("2.Grouped List:", groupedList);
-
   return (
     <div>
       <h2 className="text-xl text-center">Sort by:</h2>

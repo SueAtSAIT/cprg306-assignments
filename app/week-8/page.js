@@ -23,12 +23,6 @@ export default function Page() {
 
   const handleItemSelect = (name) => {
     // clean up the name of the ingredient to be passed to the API call
-    console.log("Type of name:", typeof name, "Value of name:", name);
-
-    if (typeof name !== "string") {
-      console.warn("handleItemSelect received non-string:", name);
-      return;
-    }
 
     let ingName = name
       .replace(
@@ -36,13 +30,7 @@ export default function Page() {
         ""
       )
       .trim();
-    console.log(
-      "Type of ingName:",
-      typeof ingName,
-      "Value of ingName:",
-      ingName
-    );
-    // trim and trim again since I can't figure out why Dish Soap has a trailing underscore after processing
+
     const ingredient = ingName.includes(",")
       ? ingName.slice(0, ingName.indexOf(",")).trim().replace(/ /g, "_")
       : ingName.trim().replace(/ /g, "_");

@@ -5,8 +5,6 @@ import React, { useState, useEffect } from "react";
 export default function GetMealIdeas({ ingredient }) {
   const [meals, setMeals] = useState([]);
 
-  console.log(`Passed ingredient is ${ingredient}`);
-
   async function fetchMealIdeas() {
     try {
       const response = await fetch(
@@ -44,7 +42,6 @@ export default function GetMealIdeas({ ingredient }) {
         <h2 className="text-xl font-bold capitalize">
           Meal ideas for {mainIngredient}
         </h2>
-
         {(meals || []).map((meal) => (
           <div key={meal.idMeal}>
             <ul className="mt-4 space-y-3">
