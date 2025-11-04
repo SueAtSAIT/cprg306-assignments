@@ -47,16 +47,6 @@ export default function Page() {
       ? ingName.slice(0, ingName.indexOf(",")).trim().replace(/ /g, "_")
       : ingName.trim().replace(/ /g, "_");
 
-    // if (ingName.search(/,/) > 0) {
-    //   let commaPosition = ingName.search(/,/);
-    //   console.log(commaPosition);
-    //   let trimmedIng = ingName.trim();
-    //   ingredient = trimmedIng.slice(0, commaPosition).replace(/ /g, "_");
-    // } else {
-    //   let trimmedIng = ingName.trim();
-    //   ingredient = trimmedIng.replace(/ /g, "_");
-    // }
-
     console.log(`ingredient: ${ingredient}`);
     setSelectedItemName(ingredient);
   };
@@ -70,10 +60,12 @@ export default function Page() {
       <header>
         <Heading title="Shopping List" />
       </header>
-      <main className="mx-auto max-w-sm items-center">
+      <main className="mx-auto max-w-fit items-center">
         <NewItem onAddItem={handleAddItem} />
-        <ItemList items={items} onItemSelect={handleItemSelect} />
-        {/* <GetMealIdeas ingredient={selectedItemName} /> */}
+        <div className="flex">
+          <ItemList items={items} onItemSelect={handleItemSelect} />
+          <GetMealIdeas ingredient={selectedItemName} />
+        </div>
       </main>
       <FooterLink />
     </>

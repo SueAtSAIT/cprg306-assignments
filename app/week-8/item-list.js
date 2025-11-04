@@ -96,7 +96,7 @@ export default function ItemList({ items = [], onItemSelect }) {
         </button>
       </div>
       <div
-        onClick={onItemSelect}
+        // onClick={onItemSelect}
         className={`${isGroupbyActive ? "hidden" : ""}`}>
         {sortedList.map((item) => (
           <Item key={item.id} {...item} onSelect={onItemSelect} />
