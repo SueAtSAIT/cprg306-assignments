@@ -8,8 +8,8 @@ import { useState, useEffect } from "react";
 import ItemList from "./item-list";
 import NewItem from "./new-item";
 import itemsData from "./items.json";
-import FooterLink from "../components/footer";
-import Heading from "../components/heading";
+import FooterLink from "../../components/footer";
+import Heading from "../../components/heading";
 import GetMealIdeas from "./meal-ideas";
 
 export default function Page() {
