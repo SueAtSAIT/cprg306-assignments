@@ -11,8 +11,12 @@ import itemsData from "./items.json";
 import FooterLink from "../../components/footer";
 import Heading from "../../components/heading";
 import GetMealIdeas from "./meal-ideas";
+import Link from "next/link";
+import { useUserAuth } from "../../contexts/AuthContext";
 
 export default function Page() {
+  const { user } = useUserAuth();
+
   const [items, setItems] = useState(itemsData);
 
   const handleAddItem = (newItem) => {
@@ -43,19 +47,29 @@ export default function Page() {
     console.log("selectedItemName changed:", selectedItemName);
   }, [selectedItemName]);
 
-  return (
-    <>
-      <header>
-        <Heading title="Shopping List" />
-      </header>
-      <main className="mx-auto max-w-fit items-center">
-        <NewItem onAddItem={handleAddItem} />
-        <div className="flex">
-          <ItemList items={items} onItemSelect={handleItemSelect} />
-          <GetMealIdeas ingredient={selectedItemName} />
-        </div>
-      </main>
-      <FooterLink />
-    </>
-  );
+  // check if the user is logged in by using the useUserAuth hook (included above)
+  // and if the user object is null, do not render the shopping list page.
+  // Optional: You can redirect the user to the landing page if you want.
+  if (user === null)
+    return (
+      <Link href="./." className="text-2xl font-bold m-4 p-4">
+        Click here to login...
+      </Link>
+    );
+  if (user)
+    return (
+      <>
+        <header>
+          <Heading title="Shopping List" />
+        </header>
+        <main className="mx-auto max-w-fit items-center">
+          <NewItem onAddItem={handleAddItem} />
+          <div className="flex">
+            <ItemList items={items} onItemSelect={handleItemSelect} />
+            <GetMealIdeas ingredient={selectedItemName} />
+          </div>
+        </main>
+        <FooterLink />
+      </>
+    );
 }

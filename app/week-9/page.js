@@ -1,8 +1,7 @@
 "use client";
 
-import { useContext, useEffect } from "react";
 // Import the useUserAuth hook
-import { AuthContextProvider, useUserAuth } from "../contexts/AuthContext";
+import { useUserAuth } from "../contexts/AuthContext";
 // import my components
 import FooterLink from "../components/footer";
 import Heading from "../components/heading";
@@ -27,7 +26,8 @@ export default function Page() {
         <Heading title="Access Your Shopping List" />
       </header>
       <main className="mx-auto max-w-fit items-center">
-        {/* <AuthContextProvider> moved to RootLayout in layout.js  */}
+        {/* <AuthContextProvider> moved to RootLayout in layout.js rather than as provided in Part 4
+        since layout.js can't have two export default functions, added to existing RootLayout so accessible by all children now  */}
 
         {/* If the user is not logged in, display a login button */}
         {!user ? (
