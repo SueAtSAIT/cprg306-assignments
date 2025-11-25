@@ -16,7 +16,6 @@ export default function GetMealIdeas({ ingredient }) {
         );
       }
       const data = await response.json();
-      console.log(`API response for ${ingredient}`, data);
 
       if (data) {
         setMeals(data.meals);

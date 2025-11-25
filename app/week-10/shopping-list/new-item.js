@@ -3,67 +3,54 @@
 import { useState } from "react";
 
 export default function NewItem({ onAddItem }) {
-  // using a constant to define each initial value since I couldn't figure out how to set it and later reset it any other way
   const initialQuantity = 1;
   const maxQuantity = 20;
   const [quantity, setQuantity] = useState(initialQuantity);
-
-  //  add button control with useState - establish initial state:
   const [isIncrementDisabled, setIsIncrementDisabled] = useState(false);
   const [isDecrementDisabled, setIsDecrementDisabled] = useState(true);
   const [isResetDisabled, setIsResetDisabled] = useState(true);
 
-  // Conditionally toggle the buttons when quantity changes
   const updateButtonStates = (quantity) => {
     setIsIncrementDisabled(quantity === maxQuantity);
     setIsDecrementDisabled(quantity === initialQuantity);
     setIsResetDisabled(quantity === initialQuantity);
   };
-  // Update quantity according to the button being activated
+
   const increment = () => {
     let newQuantity = quantity + 1;
     setQuantity(newQuantity);
     updateButtonStates(newQuantity);
   };
+
   const decrement = () => {
     let newQuantity = quantity - 1;
     setQuantity(newQuantity);
     updateButtonStates(newQuantity);
   };
+
   const reset = () => {
     let newQuantity = initialQuantity;
     setQuantity(initialQuantity);
     updateButtonStates(newQuantity);
   };
-  // handle all the input fields
+
   const initialName = "";
   const [name, setName] = useState(initialName);
-  // Use the setName function in an onChange event handler
-  // to update the state of name as the user types into the field.
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
 
   const initialCategory = "produce";
   const [category, setCategory] = useState(initialCategory);
-  // Use the setCategory function in an onChange event handler
-  // to update the state of category as the user selects a different option.
+
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
   };
 
-  // Create a handleSubmit function. This function should:
   const handleSubmit = (event) => {
-    // Prevent the form's default submission behavior.
     event.preventDefault();
 
-    //RANDOM Number formula for item.id courtesy of StackOverflow
-    //https://stackoverflow.com/questions/10726909/random-alpha-numeric-string-in-javascript
-    // Math.random().toString(36).substr(2, 8);
-    // or Math.random().toString(36).slice(2)
-    // (see if either gives a decent ID value)
     let randomID = Math.random().toString(36).slice(2);
-    // Create an item object with the current values of name, quantity, and category plus the random ID:
     onAddItem({
       id: randomID,
       name: name,
@@ -71,12 +58,11 @@ export default function NewItem({ onAddItem }) {
       category: category,
     });
 
-    // Reset the state variables to their initial values.
     setName(initialName);
     setQuantity(initialQuantity);
     setCategory(initialCategory);
   };
-  // Render the form - Name Field, quantity, Category Field, Submit button
+
   return (
     <div className="text-center bg-gray-200 max-w-md m-auto p-2 rounded-3xl dark:text-gray-600">
       <form onSubmit={handleSubmit}>

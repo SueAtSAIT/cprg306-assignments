@@ -1,5 +1,3 @@
-// Import the useState hook from React, the Item component, and the items from the JSON file.
-
 "use client";
 
 import { useState } from "react";
@@ -7,38 +5,26 @@ import { useState } from "react";
 import Item from "./item";
 import GroupedItem from "./groupeditem";
 
-// Use the useState hook to create a state variable sortBy and its setter function setSortBy.
-// This will be used to determine the sorting preference of the user.
-// Set the initial value of sortBy to "name", indicating that the list should initially be sorted by name.
-
 export default function ItemList({ items = [], onItemSelect }) {
-  // set the sorting option
   const [sortBy, setSortBy] = useState("name");
 
-  // set the initial display state for the sorting buttons
   const [isNameActive, setIsNameActive] = useState(true);
   const [isGroupbyActive, setIsGroupbyActive] = useState(false);
 
-  // handle the Category button being clicked by setting the sortBy value to category
-  // and toggle the name button state to false to make the name button inactive and category button active:
   const sortByCategory = () => {
     setSortBy("category");
     setIsNameActive(false);
     setIsGroupbyActive(false);
   };
-  // handle the Name button being clicked by setting the sortBy value to name
-  // and toggle the name button state to true to make the name button active and category button inactive:
   const sortByName = () => {
     setSortBy("name");
     setIsNameActive(true);
     setIsGroupbyActive(false);
   };
-  // toggle the control to display the list grouped by category - hide the name/category cards when active & vice-versa
   const groupByCategory = () => {
     setIsGroupbyActive(true);
   };
 
-  // sort a copy of the list based on the active sortBy value, use this for the mapped display items in the element
   const sortedList = [...items].sort((a, b) => {
     if (sortBy === "name") {
       return a.name.localeCompare(b.name);
@@ -46,9 +32,6 @@ export default function ItemList({ items = [], onItemSelect }) {
       return a.category.localeCompare(b.category);
     } else return 0;
   });
-
-  // *Optional* group the list by category
-  // Figured reduce() out by watching the linked explainer video https://youtu.be/s1XVfm5mIuU?si=j53R6HmPa1jVxgpY
 
   const groupedList = items.reduce((groupedItems, item) => {
     const category = item.category;
@@ -81,9 +64,7 @@ export default function ItemList({ items = [], onItemSelect }) {
           } my-6 mx-2 p-3 rounded-2xl  hover:bg-violet-400 hover:text-white active:bg-violet-900 `}>
           Category
         </button>
-        {/* Leaving "Group by Category" active without any meal searching 
-        or reseting of previously searched meals if this is clicked
-        (it should update ingredient to null but I don't want to mess with it any further!) */}
+
         <button
           onClick={groupByCategory}
           className={`${

@@ -1,17 +1,9 @@
-// In item.js, create a functional component named Item.
-// This component should accept name, quantity, and category as props
-// and display them in a list item element. Use Tailwind classes for styling.
-
-// week-8 makes the card clickable, passing the name of the item for cleanup,
-// to be used in the API call. Only send non-household (ie: edible) items.
-
 export default function Item({ name, quantity, category, onSelect }) {
   return (
     <section>
       <div
         onClick={() => {
           if (category != "household") {
-            console.log("Item clicked, sending name:", name); // debug
             onSelect?.(name);
           }
         }}>

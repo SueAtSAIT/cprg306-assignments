@@ -1,12 +1,6 @@
-// Code blatantly copied from M365 Copilot so I can try to understand how to unpack an array of arrays...
-
 export default function GroupedItem({ groupedList }) {
   return (
     <div>
-      {/* Object.entries returns an array which is then iterated by map to pull out each category then it's items. 
-      Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries */}
-
-      {/* add sorting by category */}
       {Object.entries(groupedList)
         .sort(([catA], [catB]) => catA.localeCompare(catB))
         .map(([category, items]) => (
