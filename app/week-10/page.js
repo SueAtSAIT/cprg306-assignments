@@ -1,10 +1,10 @@
 "use client";
 
 // Import the useUserAuth hook
-import { useUserAuth } from "../contexts/AuthContext";
+import { useUserAuth } from "@/app/contexts/AuthContext";
 // import my components
-import FooterLink from "../components/footer";
-import Heading from "../components/heading";
+import FooterLink from "@/app/components/footer";
+import Heading from "@/app/components/heading";
 import Link from "next/link";
 
 export default function Page() {
