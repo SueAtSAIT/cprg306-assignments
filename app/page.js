@@ -47,6 +47,11 @@ export default function Page() {
           className="bg-gray-600 px-3 py-1 mx-3 text-white  text-center rounded-full hover:bg-gray-400 block md:inline-block my-3">
           Week 9 Assignment
         </Link>
+        <Link
+          href="./week-10/"
+          className="bg-gray-800 px-3 py-1 mx-3 text-white  text-center rounded-full hover:bg-gray-600 block md:inline-block my-3">
+          Week 10 Assignment
+        </Link>
       </div>
     </main>
   );
