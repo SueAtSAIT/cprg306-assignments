@@ -13,14 +13,12 @@ import { useUserAuth } from "../../contexts/AuthContext";
 
 export default function Page() {
   const { user } = useUserAuth();
-
   const [items, setItems] = useState(itemsData);
+  const [selectedItemName, setSelectedItemName] = useState("");
 
   const handleAddItem = (newItem) => {
     setItems((previousItems) => [...previousItems, newItem]);
   };
-
-  const [selectedItemName, setSelectedItemName] = useState("");
 
   const handleItemSelect = (name) => {
     let ingName = name

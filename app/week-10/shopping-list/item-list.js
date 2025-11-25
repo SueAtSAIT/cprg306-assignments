@@ -7,7 +7,6 @@ import GroupedItem from "./groupeditem";
 
 export default function ItemList({ items = [], onItemSelect }) {
   const [sortBy, setSortBy] = useState("name");
-
   const [isNameActive, setIsNameActive] = useState(true);
   const [isGroupbyActive, setIsGroupbyActive] = useState(false);
 

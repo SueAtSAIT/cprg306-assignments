@@ -5,10 +5,14 @@ import { useState } from "react";
 export default function NewItem({ onAddItem }) {
   const initialQuantity = 1;
   const maxQuantity = 20;
+  const initialName = "";
+  const initialCategory = "produce";
   const [quantity, setQuantity] = useState(initialQuantity);
   const [isIncrementDisabled, setIsIncrementDisabled] = useState(false);
   const [isDecrementDisabled, setIsDecrementDisabled] = useState(true);
   const [isResetDisabled, setIsResetDisabled] = useState(true);
+  const [name, setName] = useState(initialName);
+  const [category, setCategory] = useState(initialCategory);
 
   const updateButtonStates = (quantity) => {
     setIsIncrementDisabled(quantity === maxQuantity);
@@ -34,14 +38,9 @@ export default function NewItem({ onAddItem }) {
     updateButtonStates(newQuantity);
   };
 
-  const initialName = "";
-  const [name, setName] = useState(initialName);
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
-
-  const initialCategory = "produce";
-  const [category, setCategory] = useState(initialCategory);
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
