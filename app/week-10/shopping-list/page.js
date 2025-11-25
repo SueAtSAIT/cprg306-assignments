@@ -1,15 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
+import FooterLink from "@/app/components/footer";
+import Heading from "@/app/components/heading";
+import { useUserAuth } from "@/app/contexts/AuthContext";
+
+import GetMealIdeas from "./meal-ideas";
 import ItemList from "./item-list";
 import NewItem from "./new-item";
 import itemsData from "./items.json";
-import FooterLink from "../../components/footer";
-import Heading from "../../components/heading";
-import GetMealIdeas from "./meal-ideas";
-import Link from "next/link";
-import { useUserAuth } from "../../contexts/AuthContext";
 
 export default function Page() {
   const { user } = useUserAuth();
