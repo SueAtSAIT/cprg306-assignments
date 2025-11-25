@@ -5,41 +5,15 @@ import Item from "./item";
 import GroupedItem from "./groupeditem";
 
 export default function ItemList({ items = [], onItemSelect }) {
-  // const [sortBy, setSortBy] = useState("name");
-  // const [isNameActive, setIsNameActive] = useState(true);
-  // const [isGroupbyActive, setIsGroupbyActive] = useState(false);
-
   const [view, setView] = useState("name");
-
   const sortByCategory = () => setView("category");
-  // {
-  //   setSortBy("category");
-  //   setIsNameActive(false);
-  //   setIsGroupbyActive(false);
-  // };
   const sortByName = () => setView("name");
-  // {
-  //   setSortBy("name");
-  //   setIsNameActive(true);
-  //   setIsGroupbyActive(false);
-  // };
   const groupByCategory = () => setView("group");
-  // {
-  //   setIsGroupbyActive(true);
-  // };
 
   const sortedList =
     view === "group"
       ? []
       : [...items].sort((a, b) => a[view].localeCompare(b[view]));
-
-  // {
-  //   if (sortBy === "name") {
-  //     return a.name.localeCompare(b.name);
-  //   } else if (sortBy === "category") {
-  //     return a.category.localeCompare(b.category);
-  //   } else return 0;
-  // });
 
   const groupedList = items.reduce((groupedItems, item) => {
     const category = item.category;
