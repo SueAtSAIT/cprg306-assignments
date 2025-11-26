@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = "force-dynamic"; //prevent server-side rendering so Vercel might deploy this version
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
