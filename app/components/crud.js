@@ -13,13 +13,13 @@ import { db } from "@/app/utils/firebase";
 // CRUD Operations
 
 // Create new entry
-export const addItem = async (userID, subcollectionName, itemData) => {
+export const addItem = async (user, subcollectionName, itemData) => {
   try {
     // TODO: Check item data before passing it
     const userSubcollectionRef = collection(
       db,
       "users",
-      userID,
+      user,
       subcollectionName
     );
     const docRef = await addDoc(userSubcollectionRef, itemData);
@@ -33,12 +33,12 @@ export const addItem = async (userID, subcollectionName, itemData) => {
   }
 };
 // Read all entries
-export const getItems = async (userID, subcollectionName = "items") => {
+export const getItems = async (user, subcollectionName = "items") => {
   try {
     const userSubcollectionRef = collection(
       db,
       "users",
-      userID,
+      user,
       subcollectionName
     );
     const querySnapshot = await getDocs(userSubcollectionRef);
@@ -54,9 +54,9 @@ export const getItems = async (userID, subcollectionName = "items") => {
   }
 };
 // Update an entry
-export const updateItem = async (userID, subcollectionName, itemData) => {
+export const updateItem = async (user, subcollectionName, itemData) => {
   try {
-    const itemDoc = doc(db, "users", userID, subcollectionName, id);
+    const itemDoc = doc(db, "users", user, subcollectionName, id);
     await updateDoc(itemDoc, itemData);
     console.log(`Item ${id} updated`);
   } catch (error) {
@@ -67,9 +67,9 @@ export const updateItem = async (userID, subcollectionName, itemData) => {
   }
 };
 // Delete an entry
-export const deleteItem = async (userID, subcollectionName, id) => {
+export const deleteItem = async (user, subcollectionName, id) => {
   try {
-    const itemDoc = doc(db, "users", userID, subcollectionName, id);
+    const itemDoc = doc(db, "users", user, subcollectionName, id);
     await deleteDoc(itemDoc);
   } catch (error) {
     console.error(
