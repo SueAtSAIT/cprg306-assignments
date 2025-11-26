@@ -11,20 +11,21 @@ import GetMealIdeas from "./meal-ideas";
 import ItemList from "./item-list";
 import NewItem from "./new-item";
 
-import {
-  addItem,
-  getItems,
-  updateItem,
-  deleteItem,
-} from "@/app/components/crud";
+import { addItem, getItems } from "../_services/shopping-list-service";
 
 export default function Page() {
   const { user } = useUserAuth();
-  const [items, setItems] = useState(itemsData);
+  const [items, setItems] = useState([]);
   const [selectedItemName, setSelectedItemName] = useState("");
 
-  const handleAddItem = (newItem) => {
-    setItems((previousItems) => [...previousItems, newItem]);
+  const handleAddItem = async (newItem) => {
+    try {
+      const newItemID = await addItem(user.uid, newItem);
+      const itemWithID = { ...newItem, id: newItemID };
+      setItems((previousItems) => [...previousItems, itemWithID]);
+    } catch (error) {
+      console.error("Failed to add item:", error);
+    }
   };
 
   const handleItemSelect = (name) => {
@@ -43,6 +44,21 @@ export default function Page() {
   };
 
   useEffect(() => {}, [selectedItemName]);
+
+  useEffect(() => {
+    async function loadItems() {
+      const response = await getItems(user.uid);
+
+      if (response) {
+        setItems(response);
+      } else {
+        setItems([]);
+      }
+    }
+    if (user) {
+      loadItems();
+    }
+  }, [user.uid]);
 
   if (user === null)
     return (

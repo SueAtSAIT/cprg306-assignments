@@ -1,4 +1,6 @@
-export default function Item({ name, quantity, category, onSelect }) {
+import { deleteItem } from "../_services/shopping-list-service";
+
+export default function Item({ id, name, quantity, category, onSelect }) {
   return (
     <section>
       <div
@@ -11,6 +13,7 @@ export default function Item({ name, quantity, category, onSelect }) {
           <li className="text-xl font-bold capitalize ">{name}</li>
           <li>Quantity: {quantity}</li>
           <li className="capitalize ">Category: {category}</li>
+          {/* <button onClick={() => deleteItem(user.uid, id)}>Delete</button> */}
         </ul>
       </div>
     </section>
