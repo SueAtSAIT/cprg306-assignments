@@ -21,6 +21,7 @@ export default function Page() {
   const [selectedItemName, setSelectedItemName] = useState("");
 
   const handleAddItem = async (newItem) => {
+    if (!user?.uid) return;
     try {
       const newItemID = await addItem(user.uid, newItem);
       const itemWithID = { ...newItem, id: newItemID };

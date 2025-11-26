@@ -1,5 +1,11 @@
 import { db } from "@/app/utils/firebase";
-import { collection, getDocs, addDoc, query } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 
 // Read all entries
 export const getItems = async (userID, subcollectionName = "items") => {
