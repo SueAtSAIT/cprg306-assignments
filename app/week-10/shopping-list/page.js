@@ -62,7 +62,7 @@ export default function Page() {
     if (user) {
       loadItems();
     }
-  }, [user.uid]);
+  });
 
   if (user === null)
     return (
