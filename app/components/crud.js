@@ -5,6 +5,7 @@ import {
   doc,
   deleteDoc,
   updateDoc,
+  query,
 } from "firebase/firestore";
 
 // import { db } from "@/app/firebase/config";

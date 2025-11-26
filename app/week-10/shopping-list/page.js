@@ -10,7 +10,13 @@ import { useUserAuth } from "@/app/contexts/AuthContext";
 import GetMealIdeas from "./meal-ideas";
 import ItemList from "./item-list";
 import NewItem from "./new-item";
-import itemsData from "./items.json";
+
+import {
+  addItem,
+  getItems,
+  updateItem,
+  deleteItem,
+} from "@/app/components/crud";
 
 export default function Page() {
   const { user } = useUserAuth();
