@@ -46,6 +46,7 @@ export default function Page() {
   useEffect(() => {}, [selectedItemName]);
 
   useEffect(() => {
+    if (!user?.uid) return;
     async function loadItems() {
       const response = await getItems(user.uid);
 
