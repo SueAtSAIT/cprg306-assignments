@@ -1,6 +1,8 @@
 import { deleteItem } from "../_services/shopping-list-service";
+import { useUserAuth } from "@/app/contexts/AuthContext";
 
 export default function Item({ id, name, quantity, category, onSelect }) {
+  const { user } = useUserAuth();
   return (
     <section>
       <div
