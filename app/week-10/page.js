@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useUserAuth } from "@/app/contexts/AuthContext";
 import FooterLink from "@/app/components/footer";
 import Heading from "@/app/components/heading";
@@ -7,12 +8,28 @@ import Link from "next/link";
 
 export default function Page() {
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+  const [loginError, setLoginError] = useState("");
+
   async function loginUser() {
-    const login = await gitHubSignIn();
+    try {
+      setLoginError("");
+      const login = await gitHubSignIn();
+      console.log("Login successful:", login.user);
+    } catch (error) {
+      console.error("Login error:", error);
+      setLoginError(error.message || "Failed to sign in with GitHub");
+    }
   }
 
   async function logoutUser() {
-    const logout = await firebaseSignOut();
+    try {
+      setLoginError("");
+      await firebaseSignOut();
+      console.log("Logout successful");
+    } catch (error) {
+      console.error("Logout error:", error);
+      setLoginError(error.message || "Failed to sign out");
+    }
   }
 
   return (
@@ -21,6 +38,11 @@ export default function Page() {
         <Heading title="Access Your Shopping List" />
       </header>
       <main className="mx-auto max-w-fit items-center">
+        {loginError && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-4">
+            {loginError}
+          </div>
+        )}
         {!user ? (
           <button
             type="button"
