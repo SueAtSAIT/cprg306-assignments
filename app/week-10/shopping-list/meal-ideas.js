@@ -41,24 +41,27 @@ export default function GetMealIdeas({ ingredient }) {
         <h2 className="text-xl font-bold capitalize">
           Meal ideas for {mainIngredient}
         </h2>
-        {(meals || []).map((meal) => (
-          <div key={meal.idMeal}>
-            <ul className="mt-4 space-y-3">
-              <li
-                key={meal.idMeal}
-                className="flex box-border h-14 w-75 items-center gap-3">
-                <img
-                  src={meal.strMealThumb}
-                  alt={meal.strMeal}
-                  className="w-12 h-12 object-cover rounded"
-                />
-                <span className="text-base font-medium capitalize">
-                  {meal.strMeal}
-                </span>
-              </li>
-            </ul>
-          </div>
-        ))}
+        {/* Updated per week 8 feedback re: nested div wrapper around ul */}
+        <ul className="mt-4 space-y-3">
+          {(meals || []).map((meal) => (
+            <li
+              key={meal.idMeal}
+              className="flex box-border h-14 w-75 items-center gap-3">
+              {/* Attempted to import next/image and use it to render images but
+              couldn't figure out the correct structure for the host needed in
+              next.config.js per
+              https://nextjs.org/docs/messages/next-image-unconfigured-host */}
+              <img
+                src={meal.strMealThumb}
+                alt={meal.strMeal}
+                className="w-12 h-12 object-cover rounded"
+              />
+              <span className="text-base font-medium capitalize">
+                {meal.strMeal}
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
